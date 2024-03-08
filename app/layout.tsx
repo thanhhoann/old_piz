@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { Raleway } from 'next/font/google'
-import '@radix-ui/themes/styles.css'
-import { Theme, ThemePanel } from '@radix-ui/themes'
-import '@/styles/theme-config.css'
-import Footer from '@app/ui/Footer'
+import Footer from '@/app/ui/Footer'
+
+import { Providers } from './providers'
+import { appBackgroundColor } from '@/utils/colors'
 
 const raleway = Raleway({ subsets: ['latin'], display: 'swap' })
 
@@ -19,12 +19,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={raleway.className}>
-      <body style={{ backgroundColor: 'black', color: '#ffffff' }}>
-        <Theme accentColor="sky" grayColor="slate" panelBackground="solid" scaling="90%">
+      <body style={{ backgroundColor: appBackgroundColor, color: '#ffffff' }}>
+        <Providers>
           {children}
           <Footer />
-          {/* <ThemePanel /> */}
-        </Theme>
+        </Providers>
       </body>
     </html>
   )
