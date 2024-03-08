@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { Logo } from '@/app/assets/AssetUtil'
-import CustomInput from '@/app/ui/CustomInput'
+import CustomInput, { CustomPasswordInput } from '@/app/ui/CustomInput'
 import { Button, Flex, Heading } from '@chakra-ui/react'
 
 export default function SignUp() {
@@ -11,10 +11,10 @@ export default function SignUp() {
         <Image src={Logo} alt="Logo" width={70} height={70} />
         <Heading size="md">Getting started with Piz</Heading>
         <Flex direction="column" gap="1rem" width="300px">
-          <CustomInput text="User Name" />
-          <CustomInput text="Email" />
+          <CustomInput type="text" text="User Name" />
+          <CustomInput type="text" text="Email" />
           {/* <CustomInput text="Phone Number" /> */}
-          <CustomInput text="Password" />
+          <CustomPasswordInput />
 
           <Button>Create account</Button>
         </Flex>

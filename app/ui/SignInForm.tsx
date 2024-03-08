@@ -50,8 +50,8 @@ const MyForm = withFormik<MyFormProps, FormValues>({
     let errors: FormikErrors<FormValues> = {}
     if (!values.email) {
       errors.email = 'Required'
-    } else if (!Yup.isValidEmail(values.email)) {
-      errors.email = 'Invalid email address'
+      // } else if (!Yup.isValid(values.email)) {
+      //   errors.email = 'Invalid email address'
     }
     return errors
   },
@@ -63,7 +63,7 @@ const MyForm = withFormik<MyFormProps, FormValues>({
 
 // Use <MyForm /> wherevs
 export default function Basic() {
-  ; <div>
+  ;<div>
     <h1>My App</h1>
     <p>This can be anywhere in your application</p>
     <MyForm message="Sign up" />

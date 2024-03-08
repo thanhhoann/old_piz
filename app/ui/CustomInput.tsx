@@ -7,7 +7,7 @@ type CustomInputProps = {
   type: string
 }
 
-export const CustomInput = ({ type, text }: CustomInputProps) => {
+export default function CustomInput({ type, text }: CustomInputProps) {
   return <Input type={type} placeholder={text} bg={inputBackgroundColor} border="none" focusBorderColor={inputFocusBorderColor} />
 }
 

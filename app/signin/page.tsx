@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { Logo } from '@/app/assets/AssetUtil'
-import { CustomInput, CustomPasswordInput } from '@/app/ui/CustomInput'
+import CustomInput, { CustomPasswordInput } from '@/app/ui/CustomInput'
 import { Button, Flex, Heading } from '@chakra-ui/react'
 
 export default function SignUp() {
