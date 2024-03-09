@@ -1,5 +1,6 @@
 import { inputBackgroundColor, inputFocusBorderColor } from '@/utils/colors'
 import { Button, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import React from 'react'
 
 type CustomInputProps = {
@@ -25,9 +26,9 @@ export const CustomPasswordInput = () => {
         type={show ? 'text' : 'password'}
         placeholder="Enter password"
       />
-      <InputRightElement width="4.5rem">
-        <Button h="1.75rem" size="sm" onClick={handleClick}>
-          {show ? 'Hide' : 'Show'}
+      <InputRightElement >
+        <Button  size="sm" onClick={handleClick}>
+          {show ? <ViewOffIcon/> : <ViewIcon />}
         </Button>
       </InputRightElement>
     </InputGroup>

@@ -4,7 +4,7 @@ const nextConfig = {
     styledComponents: true,
   },
   async redirects() {
-    return [{ source: '/', destination: '/signin', permanent: true }]
+    return [{ source: '/', destination: '/accounts/signin', permanent: true }]
   },
 }
 

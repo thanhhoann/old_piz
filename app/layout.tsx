@@ -1,9 +1,8 @@
+import Footer from '@/app/ui/Footer'
+import { appBackgroundColor } from '@/utils/colors'
 import type { Metadata } from 'next'
 import { Raleway } from 'next/font/google'
-import Footer from '@/app/ui/Footer'
-
 import { Providers } from './providers'
-import { appBackgroundColor } from '@/utils/colors'
 
 const raleway = Raleway({ subsets: ['latin'], display: 'swap' })
 
