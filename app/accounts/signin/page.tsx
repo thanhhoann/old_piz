@@ -6,11 +6,12 @@ import { Text, AbsoluteCenter, Box, Button, Divider, Flex, Heading, Center, Link
 import { appBackgroundColor, appTextColor } from '@/utils/colors'
 import NextLink from 'next/link'
 import { ForgotPasswordRoute, SignUpRoute } from '@/utils/app_routes'
+import CustomDivider from '@/app/ui/CustomDivider'
 
 export default function SignUp() {
   return (
     <>
-      <Flex direction="column" justifyContent="center" alignItems="center" gap="2rem" mt="3rem">
+      <Flex direction="column" justifyContent="center" alignItems="center" gap="2rem" mt="7rem">
         <Image src={Logo} alt="Logo" width={70} height={70} />
         <Heading size="md">Log in with your Piz account</Heading>
         <Flex direction="column" gap="1rem" width="300px">
@@ -23,12 +24,7 @@ export default function SignUp() {
             </Link>
           </Center>
 
-          <Box position="relative">
-            <Divider />
-            <AbsoluteCenter bg={appBackgroundColor} px="4">
-              <Text mx="0.1rem">or</Text>
-            </AbsoluteCenter>
-          </Box>
+          <CustomDivider />
 
           <Link as={NextLink} href={SignUpRoute}>
             <Button variant="ghost" border="1px" borderColor="white" color="white" width="100%" _hover={{ bg: 'white', color: 'black' }}>
