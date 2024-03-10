@@ -11,23 +11,20 @@ import CustomDivider from '@/app/ui/CustomDivider'
 export default function SignUp() {
   return (
     <>
-      <Flex direction="column" justifyContent="center" alignItems="center" gap="2rem" mt="7rem">
-        <Image src={Logo} alt="Logo" width={70} height={70} />
-        <Heading size="md">Getting started with Piz</Heading>
-        <Flex direction="column" gap="1rem" width="300px">
-          <CustomInput type="text" text="User Name" />
-          <CustomInput type="text" text="Email" />
-          <CustomPasswordInput />
-          <Button>Create account</Button>
+      <Heading size="md">Getting started with Piz</Heading>
+      <Flex direction="column" gap="1rem" width="300px">
+        <CustomInput type="text" text="User Name" />
+        <CustomInput type="text" text="Email" />
+        <CustomPasswordInput />
+        <Button>Create account</Button>
 
-          <CustomDivider />
+        <CustomDivider />
 
-          <Link as={NextLink} href={SignInRoute}>
-            <Button variant="ghost" border="1px" borderColor="white" color="white" width="100%" _hover={{ bg: 'white', color: 'black' }}>
-              Sign In with Piz
-            </Button>
-          </Link>
-        </Flex>
+        <Link as={NextLink} href={SignInRoute}>
+          <Button variant="ghost" border="1px" borderColor="white" color="white" width="100%" _hover={{ bg: 'white', color: 'black' }}>
+            Sign In with Piz
+          </Button>
+        </Link>
       </Flex>
     </>
   )

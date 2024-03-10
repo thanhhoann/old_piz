@@ -1,3 +1,4 @@
+'use client'
 import { inputBackgroundColor, inputFocusBorderColor } from '@/utils/colors'
 import { Button, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
