@@ -20,7 +20,7 @@ export default function FormWrapper({ children, headerText, backButtonText, back
   return (
     <>
       <Flex direction="column" justifyContent="center" alignItems="center" gap="2rem" mt="3rem">
-        <Image src={Logo} alt="Logo" width={70} height={70} />
+        <Image src={Logo} alt="Logo" width={70} height={70} priority={true}/>
         <Heading size="md">{headerText}</Heading>
         <Flex direction="column" gap="1rem" width="300px">
           {children}
