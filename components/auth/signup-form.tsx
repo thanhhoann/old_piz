@@ -11,7 +11,7 @@ import { SignUpSchema } from '@/schemas'
 import { ViewIcon, ViewHideIcon } from '@/assets/AssetUtil'
 import FormError from './form-error'
 
-export default function SignUpForm(props) {
+export default function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
