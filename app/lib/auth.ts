@@ -17,13 +17,16 @@ const authOptions: NextAuthConfig = {
             clientSecret: process.env.AUTH_FACEBOOK_SECRET as string,
         }),
     ],
-    adapter: SupabaseAdapter({
-        url: process.env.NEXT_PUBLIC_SUPABASE_URL,
-        secret: process.env.SUPABASE_SERVICE_ROLE_KEY,
-    }),
-    pages: {
-        signIn: SignInRoute
-    },
+    // adapter: SupabaseAdapter({
+    //     url: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    //     secret: process.env.SUPABASE_SERVICE_ROLE_KEY,
+    // }),
+    // pages: {
+    //     signIn: SignInRoute
+    // },
 }
 
-export const { handlers: { GET, POST }, auth } = NextAuth(authOptions)
+export const {
+    handlers: { GET, POST },
+    auth,
+} = NextAuth(authOptions)

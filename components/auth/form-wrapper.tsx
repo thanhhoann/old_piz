@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Center, Text, Flex, Heading, Link } from '@chakra-ui/react'
 import Image from 'next/image'
-import { Logo } from '@/app/assets/AssetUtil'
+import { Logo } from '@/assets/AssetUtil'
 import { FaFacebook } from 'react-icons/fa'
 import NextLink from 'next/link'
 import { appBackgroundColor, appTextColor } from '@/utils/colors'
@@ -29,14 +29,16 @@ export default function FormWrapper({ children, headerText, backButtonText, back
               {backButtonText}
             </Link>
           </Center>
-          {socialButton && <CustomDivider />}
+          {socialButton && (
+            <>
+              <CustomDivider />
+              <Button width="100%" gap="1rem">
+                <FaFacebook size={23} />
+                <Text>Continue with Facebook</Text>
+              </Button>
+            </>
+          )}
         </Flex>
-        {socialButton && (
-          <Button width="70%" gap="1rem">
-            <FaFacebook size={23} />
-            <Text>Continue with Facebook</Text>
-          </Button>
-        )}
       </Flex>
     </>
   )
