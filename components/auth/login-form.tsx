@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import { Button, Flex, Text, FormControl, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
+import { Button, Flex, Text, FormControl, Input, InputGroup, InputRightElement, Toast } from '@chakra-ui/react'
 import { appBackgroundColor, appTextColor, inputBackgroundColor, inputFocusBorderColor } from '@/utils/colors'
 import { ForgotPasswordRoute, SignUpRoute } from '@/utils/app_routes'
 import FormWrapper from './form-wrapper'
@@ -9,13 +9,18 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { LoginSchema } from '@/schemas'
-import { GrFormView, GrFormViewHide } from 'react-icons/gr'
 import { ViewIcon, ViewHideIcon } from '@/assets/AssetUtil'
+import FormError from './form-error'
 
 export default function LoginForm() {
-  const [showPassword, setShowPassword] = React.useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const form = useForm<z.infer<typeof LoginSchema>>({
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, touchedFields },
+  } = useForm<z.infer<typeof LoginSchema>>({
     mode: 'onChange',
     resolver: zodResolver(LoginSchema),
     defaultValues: {
@@ -25,34 +30,37 @@ export default function LoginForm() {
   })
 
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+    setIsSubmitted(true)
     console.log(values)
   }
 
   return (
     <>
       <FormWrapper headerText="Log in with Piz" backButtonText="Dont have an account ?" backButtonLink={SignUpRoute} socialButton>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <FormControl>
             <Flex direction="column" gap="0.5rem">
+              {/* email */}
               <Input
                 type="email"
                 placeholder="Email"
-                bg={inputBackgroundColor}
                 border="none"
+                bg={inputBackgroundColor}
                 focusBorderColor={inputFocusBorderColor}
                 _hover={{ bg: inputBackgroundColor }}
-                {...form.register('email')}
+                {...register('email')}
               />
+              {/* password */}
               <InputGroup size="md">
                 <Input
-                  bg={inputBackgroundColor}
-                  border="none"
-                  focusBorderColor={inputFocusBorderColor}
-                  pr="4.5rem"
-                  type={showPassword ? 'text' : 'password'}
-                  placeholder="Password"
                   id="password"
-                  {...form.register('password')}
+                  placeholder="Password"
+                  pr="4.5rem"
+                  border="none"
+                  bg={inputBackgroundColor}
+                  focusBorderColor={inputFocusBorderColor}
+                  type={showPassword ? 'text' : 'password'}
+                  {...register('password')}
                 />
                 <InputRightElement>
                   <Button
@@ -66,7 +74,15 @@ export default function LoginForm() {
               </InputGroup>
             </Flex>
           </FormControl>
-          <Button mt="0.4rem" w="full" type="submit">
+
+          {/* message */}
+          <>
+            <>{errors.email && <FormError>{errors.email.message}</FormError>}</>
+            <>{errors.password && <FormError>{errors.password.message}</FormError>}</>
+          </>
+
+          {/* log in button */}
+          <Button mt="0.4rem" w="full" type="submit" isDisabled={touchedFields.email && touchedFields.password ? false : true}>
             Log in
           </Button>
         </form>

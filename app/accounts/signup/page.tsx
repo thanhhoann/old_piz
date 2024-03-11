@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import { Logo } from '@/app/assets/AssetUtil'
+import { Logo } from '@/assets/AssetUtil'
 import CustomInput, { CustomPasswordInput } from '@/app/ui/CustomInput'
 import { AbsoluteCenter, Text, Box, Button, Divider, Flex, Heading, Link } from '@chakra-ui/react'
 import { SignInRoute, SignUpRoute } from '@/utils/app_routes'
