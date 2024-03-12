@@ -11,6 +11,7 @@ thanhhoann/piz is built on the following main stack:
 - [PostCSS](https://github.com/postcss/postcss) – CSS Pre-processors / Extensions
 - [React](https://reactjs.org/) – Javascript UI Libraries
 - [Tailwind CSS](https://tailwindcss.com) – Front-End Frameworks
+- [Zustand](https://github.com/react-spring/zustand) – State Management Library
 - [ESLint](http://eslint.org/) – Code Review
 
 Full tech stack [here](/techstack.md)
@@ -29,6 +30,7 @@ thanhhoann/piz is built on the following main stack:
 - <img width='25' height='25' src='https://img.stackshare.io/service/3339/rlFcjEdI.png' alt='PostCSS'/> [PostCSS](https://github.com/postcss/postcss) – CSS Pre-processors / Extensions
 - <img width='25' height='25' src='https://img.stackshare.io/service/1020/OYIaJ1KK.png' alt='React'/> [React](https://reactjs.org/) – Javascript UI Libraries
 - <img width='25' height='25' src='https://img.stackshare.io/service/8158/default_660b7c41c3ba489cb581eec89c04655404258c19.png' alt='Tailwind CSS'/> [Tailwind CSS](https://tailwindcss.com) – Front-End Frameworks
+- <img width='25' height='25' src='https://img.stackshare.io/service/11559/zustand.png' alt='Zustand'/> [Zustand](https://github.com/react-spring/zustand) – State Management Library
 - <img width='25' height='25' src='https://img.stackshare.io/service/3337/Q4L7Jncy.jpg' alt='ESLint'/> [ESLint](http://eslint.org/) – Code Review
 
 Full tech stack [here](/techstack.md)
@@ -40,7 +42,7 @@ Full tech stack [here](/techstack.md)
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [thanhhoann/piz](https://github.com/thanhhoann/piz)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|18<br/>Tools used|03/06/24 <br/>Report generated|
+|19<br/>Tools used|03/12/24 <br/>Report generated|
 |------|------|
 </div>
 
@@ -73,7 +75,7 @@ Full tech stack [here](/techstack.md)
 </tr>
 </table>
 
-## <img src='https://img.stackshare.io/frameworks.svg'/> Frameworks (6)
+## <img src='https://img.stackshare.io/frameworks.svg'/> Frameworks (7)
 <table><tr>
   <td align='center'>
   <img width='36' height='36' src='https://img.stackshare.io/service/2202/72d087642cfce6fef6f2dabec5bf49e8_400x400.png' alt='Autoprefixer'>
@@ -112,7 +114,7 @@ Full tech stack [here](/techstack.md)
   <br>
   <sub><a href="https://reactjs.org/">React</a></sub>
   <br>
-  <sub></sub>
+  <sub>v18.2.0</sub>
 </td>
 
 <td align='center'>
@@ -121,6 +123,14 @@ Full tech stack [here](/techstack.md)
   <sub><a href="https://tailwindcss.com">Tailwind CSS</a></sub>
   <br>
   <sub></sub>
+</td>
+
+<td align='center'>
+  <img width='36' height='36' src='https://img.stackshare.io/service/11559/zustand.png' alt='Zustand'>
+  <br>
+  <sub><a href="https://github.com/react-spring/zustand">Zustand</a></sub>
+  <br>
+  <sub>v4.5.2</sub>
 </td>
 
 </tr>
@@ -162,15 +172,14 @@ Full tech stack [here](/techstack.md)
 
 |NAME|VERSION|LAST UPDATED|LAST UPDATED BY|LICENSE|VULNERABILITIES|
 |:------|:------|:------|:------|:------|:------|
-|[@types/node](https://www.npmjs.com/@types/node)|N/A|03/06/24|thanhhoann |MIT|N/A|
-|[@types/react](https://www.npmjs.com/@types/react)|N/A|03/06/24|thanhhoann |MIT|N/A|
-|[@types/react-dom](https://www.npmjs.com/@types/react-dom)|N/A|03/06/24|thanhhoann |MIT|N/A|
+|[@types/node](https://www.npmjs.com/@types/node)|v20.11.24|03/06/24|thanhhoann |MIT|N/A|
+|[@types/react](https://www.npmjs.com/@types/react)|v18.2.63|03/06/24|thanhhoann |MIT|N/A|
+|[@types/react-dom](https://www.npmjs.com/@types/react-dom)|v18.2.20|03/06/24|thanhhoann |MIT|N/A|
 |[eslint-config-next](https://www.npmjs.com/eslint-config-next)|v14.1.2|03/06/24|thanhhoann |N/A|N/A|
-|[react-dom](https://www.npmjs.com/react-dom)|N/A|03/06/24|thanhhoann |MIT|N/A|
-|[tailwindcss](https://www.npmjs.com/tailwindcss)|v3.3.0|03/06/24|thanhhoann |MIT|N/A|
+|[react-dom](https://www.npmjs.com/react-dom)|v18.2.0|03/06/24|thanhhoann |MIT|N/A|
+|[tailwindcss](https://www.npmjs.com/tailwindcss)|v3.4.1|03/06/24|thanhhoann |MIT|N/A|
 
 <br/>
 <div align='center'>
 
 Generated via [Stack File](https://github.com/marketplace/stack-file)
-
