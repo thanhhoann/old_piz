@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Flex, Text, FormControl, Input, InputGroup, InputRightElement, Toast } from '@chakra-ui/react'
 import { appBackgroundColor, appTextColor, inputBackgroundColor, inputFocusBorderColor } from '@/utils/colors'
-import { ForgotPasswordRoute, SignUpRoute } from '@/utils/app_routes'
+import { ForgotPasswordRoute, SignUpRoute } from '@/utils/app-routes'
 import FormWrapper from './form-wrapper'
 
 import { useForm } from 'react-hook-form'

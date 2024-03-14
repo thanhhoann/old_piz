@@ -16,10 +16,7 @@ export default function Home() {
           A social media for <Text as='mark'>nerds</Text>.
         </Text>
 
-        {/* <LoggedInfo /> */}
-        <LoginButton>
-          <Button>Sign In</Button>
-        </LoginButton>
+        <LoggedInfo />
       </Flex>
     </>
   )

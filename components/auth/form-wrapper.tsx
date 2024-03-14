@@ -5,7 +5,7 @@ import { Logo } from '@/assets/AssetUtil'
 import { FaFacebook } from 'react-icons/fa'
 import NextLink from 'next/link'
 import { appBackgroundColor, appTextColor } from '@/utils/colors'
-import { ForgotPasswordRoute } from '@/utils/app_routes'
+import { ForgotPasswordRoute } from '@/utils/app-routes'
 import CustomDivider from '@/app/ui/CustomDivider'
 
 interface FormWrapperProps {

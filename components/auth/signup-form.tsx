@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import FormWrapper from './form-wrapper'
-import { SignInRoute } from '@/utils/app_routes'
+import { HomeRoute, SignInRoute } from '@/utils/app-routes'
 import { appBackgroundColor, appTextColor, inputBackgroundColor, inputFocusBorderColor } from '@/utils/colors'
 import { Button, Flex, Text, FormControl, Input, InputGroup, InputRightElement, Toast } from '@chakra-ui/react'
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
-import { SignUpSchema } from '@/schemas'
+import { SignUpInterface, SignUpSchema } from '@/schemas'
 import { ViewIcon, ViewHideIcon } from '@/assets/AssetUtil'
 import FormError from './form-error'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { useRouter } from 'next/navigation'
 
 export default function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false)
@@ -18,6 +20,7 @@ export default function SignUpForm() {
   const {
     handleSubmit,
     register,
+    getValues,
     formState: { errors, touchedFields },
   } = useForm<z.infer<typeof SignUpSchema>>({
     mode: 'onChange',
@@ -29,10 +32,28 @@ export default function SignUpForm() {
     },
   })
 
+  const router = useRouter()
+
+  const supabase = createClientComponentClient()
+
+  const handleSignUp = async ({ username, email, password }: SignUpInterface) => {
+    await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { username: username },
+        emailRedirectTo: `${location.origin}/api/auth/callback`,
+      },
+    })
+    router.push(HomeRoute)
+  }
+
   const onSubmit = (values: z.infer<typeof SignUpSchema>) => {
     setIsSubmitted(true)
     console.log(values)
+    handleSignUp(values)
   }
+
   return (
     <>
       <FormWrapper
