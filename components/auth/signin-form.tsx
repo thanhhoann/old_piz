@@ -2,23 +2,27 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Flex, Text, FormControl, Input, InputGroup, InputRightElement, Toast } from '@chakra-ui/react'
 import { appBackgroundColor, appTextColor, inputBackgroundColor, inputFocusBorderColor } from '@/utils/colors'
-import { ForgotPasswordRoute, SignUpRoute } from '@/utils/app-routes'
+import { ForgotPasswordRoute, HomeRoute, SignUpRoute } from '@/utils/app-routes'
 import FormWrapper from './form-wrapper'
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
-import { LoginSchema } from '@/schemas'
+import { ISignIn, LoginSchema } from '@/schemas'
 import { ViewIcon, ViewHideIcon } from '@/assets/AssetUtil'
 import FormError from './form-error'
+import { useRouter } from 'next/navigation'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
-export default function LoginForm() {
+export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [user, setUser] = React.useState<any | null>()
 
   const {
     handleSubmit,
     register,
+    resetField,
     formState: { errors, touchedFields },
   } = useForm<z.infer<typeof LoginSchema>>({
     mode: 'onChange',
@@ -29,9 +33,24 @@ export default function LoginForm() {
     },
   })
 
+  const router = useRouter()
+  const supabase = createClientComponentClient()
+
+  const handleSignIn = async ({ email, password }: ISignIn) => {
+    const res = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    })
+    if (res) setUser(res.data.user)
+    router.push(HomeRoute)
+  }
+
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
     setIsSubmitted(true)
     console.log(values)
+    handleSignIn(values)
+    resetField('email')
+    resetField('password')
   }
 
   return (

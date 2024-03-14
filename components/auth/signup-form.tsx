@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react'
 import FormWrapper from './form-wrapper'
 import { HomeRoute, SignInRoute } from '@/utils/app-routes'
 import { appBackgroundColor, appTextColor, inputBackgroundColor, inputFocusBorderColor } from '@/utils/colors'
-import { Button, Flex, Text, FormControl, Input, InputGroup, InputRightElement, Toast } from '@chakra-ui/react'
+import { Button, Flex, Text, FormControl, Input, InputGroup, InputRightElement, Toast, useToast } from '@chakra-ui/react'
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
-import { SignUpInterface, SignUpSchema } from '@/schemas'
+import { ISignUp, SignUpSchema } from '@/schemas'
 import { ViewIcon, ViewHideIcon } from '@/assets/AssetUtil'
 import FormError from './form-error'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
@@ -20,7 +20,7 @@ export default function SignUpForm() {
   const {
     handleSubmit,
     register,
-    getValues,
+    resetField,
     formState: { errors, touchedFields },
   } = useForm<z.infer<typeof SignUpSchema>>({
     mode: 'onChange',
@@ -33,11 +33,11 @@ export default function SignUpForm() {
   })
 
   const router = useRouter()
-
   const supabase = createClientComponentClient()
+  const toast = useToast()
 
-  const handleSignUp = async ({ username, email, password }: SignUpInterface) => {
-    await supabase.auth.signUp({
+  const handleSignUp = async ({ username, email, password }: ISignUp) => {
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -45,6 +45,23 @@ export default function SignUpForm() {
         emailRedirectTo: `${location.origin}/api/auth/callback`,
       },
     })
+    if (error)
+      toast({
+        title: 'Failed to create account.',
+        description: error.message,
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      })
+    else if (data) {
+      toast({
+        title: 'Account created.',
+        description: "We've created your account for you.",
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      })
+    }
     router.push(HomeRoute)
   }
 
@@ -52,15 +69,14 @@ export default function SignUpForm() {
     setIsSubmitted(true)
     console.log(values)
     handleSignUp(values)
+    resetField('username')
+    resetField('email')
+    resetField('password')
   }
 
   return (
     <>
-      <FormWrapper
-        headerText="Getting started with Piz"
-        backButtonText="Already have an account ?"
-        backButtonLink={SignInRoute}
-        socialButton>
+      <FormWrapper headerText="Getting started with Piz" backButtonText="Already have an account ?" backButtonLink={SignInRoute}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormControl>
             <Flex direction="column" gap="0.5rem">

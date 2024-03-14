@@ -15,13 +15,13 @@ export const SignUpSchema = z.object({
   }),
 })
 
-export interface SignUpInterface {
+export interface ISignUp {
   username?: string
   email: string
   password: string
 }
 
-export interface SignInInterface {
+export interface ISignIn {
   email: string
   password: string
 }
