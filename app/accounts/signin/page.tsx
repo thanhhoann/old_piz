@@ -1,5 +1,5 @@
-import SignInForm from '@/components/auth/signin-form'
+import FormSignIn from '@/components/auth/form-signin'
 
 export default function SignIn() {
-  return <SignInForm />
+  return <FormSignIn />
 }

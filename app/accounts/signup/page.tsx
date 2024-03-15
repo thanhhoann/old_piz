@@ -1,6 +1,6 @@
 'use client'
-import SignUpForm from '@/components/auth/signup-form'
+import FormSignUp from '@/components/auth/form-signup'
 
 export default function SignUp() {
-  return <SignUpForm />
+  return <FormSignUp />
 }

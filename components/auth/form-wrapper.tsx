@@ -7,6 +7,7 @@ import NextLink from 'next/link'
 import { appBackgroundColor, appTextColor } from '@/utils/colors'
 import { ForgotPasswordRoute } from '@/utils/app-routes'
 import CustomDivider from '@/app/ui/CustomDivider'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
 interface FormWrapperProps {
   children: React.ReactNode
@@ -17,10 +18,17 @@ interface FormWrapperProps {
 }
 
 export default function FormWrapper({ children, headerText, backButtonText, backButtonLink, socialButton }: FormWrapperProps) {
+  const supabase = createClientComponentClient()
+  const signInWithFacebook = async () => {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'facebook',
+    })
+  }
+
   return (
     <>
       <Flex direction="column" justifyContent="center" alignItems="center" gap="2rem" mt="3rem">
-        <Image src={Logo} alt="Logo" width={70} height={70} priority={true}/>
+        <Image src={Logo} alt="Logo" width={70} height={70} priority={true} />
         <Heading size="md">{headerText}</Heading>
         <Flex direction="column" gap="1rem" width="300px">
           {children}
@@ -32,7 +40,7 @@ export default function FormWrapper({ children, headerText, backButtonText, back
           {socialButton && (
             <>
               <CustomDivider />
-              <Button width="100%" gap="1rem">
+              <Button onClick={signInWithFacebook} width="100%" gap="1rem">
                 <FaFacebook size={23} />
                 <Text>Continue with Facebook</Text>
               </Button>
