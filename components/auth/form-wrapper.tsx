@@ -5,7 +5,7 @@ import { Logo } from '@/assets/AssetUtil'
 import { FaFacebook } from 'react-icons/fa'
 import NextLink from 'next/link'
 import { appBackgroundColor, appTextColor } from '@/utils/colors'
-import { ForgotPasswordRoute } from '@/utils/app-routes'
+import { ForgotPasswordRoute, HomeRoute } from '@/utils/app-routes'
 import CustomDivider from '@/app/ui/CustomDivider'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
@@ -28,7 +28,9 @@ export default function FormWrapper({ children, headerText, backButtonText, back
   return (
     <>
       <Flex direction="column" justifyContent="center" alignItems="center" gap="2rem" mt="3rem">
-        <Image src={Logo} alt="Logo" width={70} height={70} priority={true} />
+        <Link as={NextLink} href={HomeRoute}>
+          <Image src={Logo} alt="Logo" width={70} height={70} priority={true} />
+        </Link>
         <Heading size="md">{headerText}</Heading>
         <Flex direction="column" gap="1rem" width="300px">
           {children}
