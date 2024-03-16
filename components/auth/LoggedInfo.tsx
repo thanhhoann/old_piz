@@ -4,7 +4,7 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 // import { auth } from '@/app/lib/auth'
 // import { useSession } from 'next-auth/react'
 import React, { useState, useEffect } from 'react'
-import { LoginButton } from './login-button'
+import { LoginButton } from './LoginBtn'
 import { useRouter } from 'next/navigation'
 
 export default function LoggedInfo() {
@@ -30,7 +30,6 @@ export default function LoggedInfo() {
     setUser(null)
   }
 
-  console.log(user)
   return (
     <>
       {user ? (

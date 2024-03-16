@@ -1,5 +1,5 @@
 'use client'
-import FormSignUp from '@/components/auth/form-signup'
+import FormSignUp from '@/components/auth/FormSignup'
 
 export default function SignUp() {
   return <FormSignUp />

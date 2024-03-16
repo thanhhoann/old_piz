@@ -1,32 +1,38 @@
-import React, { useState, useEffect } from 'react'
-import FormWrapper from './form-wrapper'
-import { HomeRoute, SignInRoute } from '@/utils/app-routes'
-import { appBackgroundColor, appTextColor, inputBackgroundColor, inputFocusBorderColor } from '@/utils/colors'
-import { Button, Flex, Text, FormControl, Input, InputGroup, InputRightElement, Toast, useToast } from '@chakra-ui/react'
+'use client'
+import { HomeRoute, SignUpRoute } from '@/utils/app-routes'
+import { inputBackgroundColor, inputFocusBorderColor } from '@/utils/colors'
+import { Button, Flex, FormControl, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
+import React, { useState } from 'react'
+import FormWrapper from './FormWrapper'
 
-import { useForm } from 'react-hook-form'
+import { ViewHideIcon, ViewIcon } from '@/assets/AssetUtil'
+import { LoginSchema } from '@/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
-import { ISignUp, SignUpSchema } from '@/schemas'
-import { ViewIcon, ViewHideIcon } from '@/assets/AssetUtil'
-import FormError from './form-error'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
+import { useForm } from 'react-hook-form'
+import * as z from 'zod'
+import FormErrorMessage from './FormErrorMessage'
 
-export default function SignUpForm() {
+export interface ISignIn {
+  email: string
+  password: string
+}
+
+export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [user, setUser] = React.useState<any | null>()
 
   const {
     handleSubmit,
     register,
     resetField,
     formState: { errors, touchedFields },
-  } = useForm<z.infer<typeof SignUpSchema>>({
+  } = useForm<z.infer<typeof LoginSchema>>({
     mode: 'onChange',
-    resolver: zodResolver(SignUpSchema),
+    resolver: zodResolver(LoginSchema),
     defaultValues: {
-      username: '',
       email: '',
       password: '',
     },
@@ -34,66 +40,31 @@ export default function SignUpForm() {
 
   const router = useRouter()
   const supabase = createClientComponentClient()
-  const toast = useToast()
 
-  const handleSignUp = async ({ username, email, password }: ISignUp) => {
-    const { data, error } = await supabase.auth.signUp({
+  const handleSignIn = async ({ email, password }: ISignIn) => {
+    const res = await supabase.auth.signInWithPassword({
       email,
       password,
-      options: {
-        data: { username: username },
-        emailRedirectTo: `${location.origin}/api/auth/callback`,
-      },
     })
-    if (error)
-      toast({
-        title: 'Failed to create account.',
-        description: error.message,
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
-      })
-    else if (data) {
-      toast({
-        title: 'Account created.',
-        description: "We've created your account for you.",
-        status: 'success',
-        duration: 3000,
-        isClosable: true,
-      })
-    }
-    // router.push(HomeRoute)
+    if (res) setUser(res.data.user)
+    router.push(HomeRoute)
   }
 
-  const onSubmit = (values: z.infer<typeof SignUpSchema>) => {
+  const onSubmit = (values: z.infer<typeof LoginSchema>) => {
     setIsSubmitted(true)
-    console.log(values)
-    handleSignUp(values)
-    resetField('username')
+    handleSignIn(values)
     resetField('email')
     resetField('password')
   }
 
   return (
     <>
-      <FormWrapper headerText="Getting started with Piz" backButtonText="Already have an account ?" backButtonLink={SignInRoute}>
+      <FormWrapper headerText="Log in with Piz" backButtonText="Dont have an account ?" backButtonLink={SignUpRoute}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormControl>
             <Flex direction="column" gap="0.5rem">
-              {/* user name */}
-              <Input
-                id="username"
-                type="text"
-                placeholder="Username"
-                border="none"
-                bg={inputBackgroundColor}
-                focusBorderColor={inputFocusBorderColor}
-                _hover={{ bg: inputBackgroundColor }}
-                {...register('username')}
-              />
               {/* email */}
               <Input
-                id="email"
                 type="email"
                 placeholder="Email"
                 border="none"
@@ -129,13 +100,13 @@ export default function SignUpForm() {
 
           {/* message */}
           <>
-            <>{errors.email && <FormError>{errors.email.message}</FormError>}</>
-            <>{errors.password && <FormError>{errors.password.message}</FormError>}</>
+            <>{errors.email && <FormErrorMessage>{errors.email.message}</FormErrorMessage>}</>
+            <>{errors.password && <FormErrorMessage>{errors.password.message}</FormErrorMessage>}</>
           </>
 
           {/* log in button */}
           <Button mt="0.4rem" w="full" type="submit" isDisabled={touchedFields.email && touchedFields.password ? false : true}>
-            Sign Up
+            Log in
           </Button>
         </form>
       </FormWrapper>

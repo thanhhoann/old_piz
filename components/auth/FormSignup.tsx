@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import FormWrapper from './form-wrapper'
+import FormWrapper from './FormWrapper'
 import { HomeRoute, SignInRoute } from '@/utils/app-routes'
 import { appBackgroundColor, appTextColor, inputBackgroundColor, inputFocusBorderColor } from '@/utils/colors'
 import { Button, Flex, Text, FormControl, Input, InputGroup, InputRightElement, Toast, useToast } from '@chakra-ui/react'
@@ -9,7 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { SignUpSchema } from '@/schemas'
 import { ViewIcon, ViewHideIcon } from '@/assets/AssetUtil'
-import FormError from './form-error'
+import FormErrorMessage from './FormErrorMessage'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 
@@ -135,9 +135,9 @@ export default function SignUpForm() {
 
           {/* message */}
           <>
-            <>{errors.username && <FormError>{errors.username.message}</FormError>}</>
-            <>{errors.email && <FormError>{errors.email.message}</FormError>}</>
-            <>{errors.password && <FormError>{errors.password.message}</FormError>}</>
+            <>{errors.username && <FormErrorMessage>{errors.username.message}</FormErrorMessage>}</>
+            <>{errors.email && <FormErrorMessage>{errors.email.message}</FormErrorMessage>}</>
+            <>{errors.password && <FormErrorMessage>{errors.password.message}</FormErrorMessage>}</>
           </>
 
           {/* log in button */}

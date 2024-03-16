@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import { Button, Center, Text, Flex, Heading, Link } from '@chakra-ui/react'
-import Image from 'next/image'
 import { Logo } from '@/assets/AssetUtil'
-import { FaFacebook } from 'react-icons/fa'
-import NextLink from 'next/link'
+import CustomDivider from '@/components/common/CustomDivider'
+import { HomeRoute } from '@/utils/app-routes'
 import { appBackgroundColor, appTextColor } from '@/utils/colors'
-import { ForgotPasswordRoute, HomeRoute } from '@/utils/app-routes'
-import CustomDivider from '@/app/ui/CustomDivider'
+import { Button, Center, Flex, Heading, Link, Text } from '@chakra-ui/react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import Image from 'next/image'
+import NextLink from 'next/link'
+import React from 'react'
+import { FaFacebook } from 'react-icons/fa'
 
 interface FormWrapperProps {
   children: React.ReactNode

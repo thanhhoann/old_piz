@@ -1,4 +1,5 @@
-import Footer from '@/app/ui/Footer'
+import Footer from '@/components/common/Footer'
+import Nav from '@/components/ui/Nav'
 import { appBackgroundColor } from '@/utils/colors'
 import type { Metadata } from 'next'
 import { Raleway } from 'next/font/google'
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang="en" className={raleway.className}>
       <body style={{ backgroundColor: appBackgroundColor, color: '#ffffff' }}>
         <Providers>
+          <Nav />
           {children}
           <Footer />
         </Providers>
