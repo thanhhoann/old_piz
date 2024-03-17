@@ -1,26 +1,26 @@
 'use client'
-import { Center, Flex } from '@chakra-ui/react'
-import LogoComponent from '../../common/LogoComponent'
-import NavItem, { INavItem } from './NavItem'
 import {
   ActivityNoSelectSVG,
   ActivitySelectSVG,
   AddSVG,
-  HamburgerSVG,
+  HamburgerNoSelectSVG,
   HomeNoSelectSVG,
   HomeSelectSVG,
-  Logo,
   SearchNoSelectSVG,
   SearchSelectSVG,
   UserNoSelectSVG,
   UserSelectSVG,
-  ViewIcon,
 } from '@/assets/AssetUtil'
-import { ActivityRoute, HomeRoute, ProfileRoute, SearchRoute } from '@/utils/app-routes'
-import { useRouter, usePathname } from 'next/navigation'
-import React, { useEffect } from 'react'
+import { ActivityRoute, HomeRoute, SearchRoute } from '@/utils/app-routes'
+import { Box, Center, Flex } from '@chakra-ui/react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import Image from 'next/image'
+import { usePathname, useRouter } from 'next/navigation'
+import React, { useEffect } from 'react'
+import useMedia from 'use-media'
+import LogoComponent from '../../common/LogoComponent'
+import NavItem, { INavItem } from './NavItem'
+import NavItemHamburger from './NavItemHamburger'
 
 export default function Nav() {
   const [navItems, setNavItems] = React.useState<INavItem[]>()
@@ -42,7 +42,6 @@ export default function Nav() {
   }, [])
 
   useEffect(() => {
-    console.log(user)
     if (pathName == HomeRoute) {
       setNavItems([
         { activeIcon: HomeSelectSVG, inactiveIcon: HomeNoSelectSVG, href: HomeRoute, isSelected: true },
@@ -101,15 +100,49 @@ export default function Nav() {
     }
   }, [pathName])
 
+  const isNarrow = useMedia({ minWidth: '760px' })
+
   return (
     <>
-      <Flex w="100vw" justifyContent="space-between" p={5}>
-        <LogoComponent w={50} h={50} />
-        <Center>
-          <Flex gap={10}>{navItems?.map((item) => <NavItem {...item} />)}</Flex>
-        </Center>
-        <Image src={HamburgerSVG} width={50} height={50} alt="Hamburger" />
-      </Flex>
+      {isNarrow ? (
+        <>
+          <Flex w="100vw" justifyContent="space-between" alignItems="center" p={5}>
+            <LogoComponent w={50} h={50} />
+            <Center>
+              <Flex gap="3rem" alignItems="center">
+                {navItems?.map((item) => <NavItem {...item} />)}
+              </Flex>
+            </Center>
+            <NavItemHamburger />
+          </Flex>
+        </>
+      ) : (
+        <>
+          <Flex w="100vw" justifyContent="space-between" alignItems="center" py={5}>
+            <Box />
+            <Box ml="3rem">
+              <LogoComponent w={50} h={50} />
+            </Box>
+            <Image src={HamburgerNoSelectSVG} width={50} height={50} alt="Hamburger" />
+          </Flex>
+          <footer
+            style={{
+              position: 'fixed',
+              bottom: 0,
+              left: 0,
+              width: '100vw',
+              color: '#fff',
+              padding: '10px',
+              textAlign: 'center',
+            }}>
+            <Center>
+              <Flex px="1rem" py="0.5rem" gap="3rem" alignItems="center">
+                {navItems?.map((item) => <NavItem {...item} />)}
+              </Flex>
+            </Center>
+          </footer>
+        </>
+      )}
     </>
   )
 }

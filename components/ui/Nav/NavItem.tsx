@@ -23,7 +23,7 @@ export default function NavItem({ activeIcon, inactiveIcon, href = '#', isSelect
         </>
       ) : (
         <LinkComponent href={href}>
-          <Image src={isSelected ? activeIcon : inactiveIcon} alt="Nav Item Logo" width={60} height={60} />
+          <Image src={isSelected ? activeIcon : inactiveIcon} alt="Nav Item Logo" width={40} height={40} />
         </LinkComponent>
       )}
     </>

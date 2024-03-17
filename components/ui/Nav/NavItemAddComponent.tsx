@@ -20,7 +20,7 @@ export default function NavItemAddComponent({ icon }: { icon: string | StaticImp
   return (
     <>
       <Box onClick={onOpen} cursor="pointer">
-        <Image src={icon} alt="Nav Item Logo" width={60} height={60} />
+        <Image src={icon} alt="Nav Item Logo" width={50} height={50} />
       </Box>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
