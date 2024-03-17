@@ -1,18 +1,18 @@
 'use client'
+import { ViewHideIcon, ViewIcon } from '@/assets/AssetUtil'
+import { LoginSchema } from '@/schemas'
 import { HomeRoute, SignUpRoute } from '@/utils/app-routes'
 import { inputBackgroundColor, inputFocusBorderColor } from '@/utils/colors'
 import { Button, Flex, FormControl, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
-import React, { useState } from 'react'
-import FormWrapper from './FormWrapper'
-
-import { ViewHideIcon, ViewIcon } from '@/assets/AssetUtil'
-import { LoginSchema } from '@/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 import FormErrorMessage from './FormErrorMessage'
+import FormWrapper from './FormWrapper'
+import { useUserStore, userStore } from '@/store/user-store'
 
 export interface ISignIn {
   email: string
@@ -23,6 +23,8 @@ export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [user, setUser] = React.useState<any | null>()
+
+  const setUsername = userStore.use.setUsername()
 
   const {
     handleSubmit,
@@ -46,7 +48,11 @@ export default function SignInForm() {
       email,
       password,
     })
-    if (res) setUser(res.data.user)
+    if (res) {
+      let data = res.data
+      setUser(data.user)
+      setUsername(data.user?.user_metadata?.username)
+    }
     router.push(HomeRoute)
   }
 
