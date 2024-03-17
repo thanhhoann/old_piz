@@ -1,26 +1,25 @@
+import { iconStyles } from '@/utils/icon-styles'
 import {
-  Box,
-  Button,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  useDisclosure,
+    Box,
+    Button,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
+    useDisclosure,
 } from '@chakra-ui/react'
-import { StaticImport } from 'next/dist/shared/lib/get-img-props'
-import Image from 'next/image'
-import React, { useState, useEffect } from 'react'
+import { FaRegPenToSquare } from 'react-icons/fa6'
 
-export default function NavItemAddComponent({ icon }: { icon: string | StaticImport }) {
+export default function NavItemAddComponent() {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
     <>
       <Box onClick={onOpen} cursor="pointer">
-        <Image src={icon} alt="Nav Item Logo" width={50} height={50} />
+        <FaRegPenToSquare style={iconStyles.nav.inactive} />
       </Box>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

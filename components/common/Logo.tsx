@@ -1,12 +1,13 @@
+import { Logo } from '@/assets/AssetUtil'
+import { HomeRoute } from '@/utils/app-routes'
 import { Link } from '@chakra-ui/react'
-import NextLink from 'next/link'
 import Image from 'next/image'
-import React, { useState, useEffect } from 'react'
+import NextLink from 'next/link'
 
-export default function Logo({ link }: { link: string }) {
+export default function LogoComponent() {
   return (
     <>
-      <Link as={NextLink} href={link}>
+      <Link as={NextLink} href={HomeRoute}>
         <Image src={Logo} alt="Logo" width={70} height={70} priority={true} />
       </Link>
     </>
