@@ -12,6 +12,8 @@ import { ViewIcon, ViewHideIcon } from '@/assets/AssetUtil'
 import FormErrorMessage from './FormErrorMessage'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
+import { iconStyles } from '@/utils/icon-styles'
+import { GrFormView, GrFormViewHide } from 'react-icons/gr'
 
 export interface ISignUp {
   username?: string
@@ -126,7 +128,7 @@ export default function SignUpForm() {
                     bg={inputBackgroundColor}
                     _hover={{ bg: inputBackgroundColor }}
                     onClick={() => setShowPassword(!showPassword)}>
-                    {showPassword ? <ViewHideIcon /> : <ViewIcon />}
+                    {showPassword ? <GrFormViewHide style={iconStyles.input}/> : <GrFormView style={iconStyles.input} />}
                   </Button>
                 </InputRightElement>
               </InputGroup>

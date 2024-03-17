@@ -1,6 +1,6 @@
 'use client'
-import { ViewHideIcon, ViewIcon } from '@/assets/AssetUtil'
 import { LoginSchema } from '@/schemas'
+import { userStore } from '@/store/user-store'
 import { HomeRoute, SignUpRoute } from '@/utils/app-routes'
 import { inputBackgroundColor, inputFocusBorderColor } from '@/utils/colors'
 import { Button, Flex, FormControl, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
@@ -9,10 +9,11 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { GrFormView, GrFormViewHide } from 'react-icons/gr'
 import * as z from 'zod'
 import FormErrorMessage from './FormErrorMessage'
 import FormWrapper from './FormWrapper'
-import { useUserStore, userStore } from '@/store/user-store'
+import { iconStyles } from '@/utils/icon-styles'
 
 export interface ISignIn {
   email: string
@@ -97,7 +98,7 @@ export default function SignInForm() {
                     bg={inputBackgroundColor}
                     _hover={{ bg: inputBackgroundColor }}
                     onClick={() => setShowPassword(!showPassword)}>
-                    {showPassword ? <ViewHideIcon /> : <ViewIcon />}
+                    {showPassword ? <GrFormView style={iconStyles.input}/> : <GrFormViewHide style={iconStyles.input} />}
                   </Button>
                 </InputRightElement>
               </InputGroup>
