@@ -56,15 +56,16 @@ export default function SignInForm() {
       const session_data = res.data.session
 
       const user = {
-        username: user_data?.user_metadata.username,
-        email: user_data?.email,
         id: user_data?.id,
+        email: user_data?.email,
+        username: user_data?.user_metadata.username,
         created_at: user_data?.created_at,
         last_sign_in_at: user_data?.last_sign_in_at,
         phone_number: user_data?.phone,
       }
 
       const tokens = {
+        token_type: session_data?.token_type,
         access_token: session_data?.access_token,
         refresh_token: session_data?.refresh_token,
       }

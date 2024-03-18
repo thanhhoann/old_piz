@@ -6,6 +6,7 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import React, { useState, useEffect } from 'react'
 import { LoginButton } from './LoginBtn'
 import { useRouter } from 'next/navigation'
+import Avatar from '../common/UserAvatar'
 
 export default function LoggedInfo() {
   const [user, setUser] = React.useState<any | null>()
@@ -34,6 +35,7 @@ export default function LoggedInfo() {
     <>
       {user ? (
         <Flex direction="column" gap="1rem">
+                    <Avatar/>
           <Text>
             Logged in as: <Text as="b">{user?.email}</Text>
           </Text>

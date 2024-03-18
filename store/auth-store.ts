@@ -3,21 +3,22 @@ import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
 type UserState = {
-  username?: string
-  email?: string
   id?: string
+  email?: string
+  username?: string
   create_at?: string
   last_sign_in_at?: string
   phone_number?: string
 }
 
 type TokenState = {
+  token_type?: string
   access_token?: string
   refresh_token?: string
 }
 
 type AuthState = {
-  isAuthenticated?: boolean
+  isAuthenticated: boolean
   token: null | TokenState
   user: null | UserState
   setUser: (user: UserState) => void
