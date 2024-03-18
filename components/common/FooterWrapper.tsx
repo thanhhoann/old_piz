@@ -9,9 +9,9 @@ export default function FooterWrapper({ children }: { children: React.ReactNode 
           bottom: 0,
           left: 0,
           width: '100%',
-          color: '#fff',
           padding: '10px',
           textAlign: 'center',
+          fontWeight: '800',
         }}>
         {children}
       </footer>

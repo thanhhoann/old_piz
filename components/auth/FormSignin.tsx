@@ -1,8 +1,9 @@
 'use client'
 import { LoginSchema } from '@/schemas'
-import { userStore } from '@/store/user-store'
+import { authStore } from '@/store/auth-store'
 import { HomeRoute, SignUpRoute } from '@/utils/app-routes'
 import { inputBackgroundColor, inputFocusBorderColor } from '@/utils/colors'
+import { iconStyles } from '@/utils/icon-styles'
 import { Button, Flex, FormControl, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
@@ -13,7 +14,6 @@ import { GrFormView, GrFormViewHide } from 'react-icons/gr'
 import * as z from 'zod'
 import FormErrorMessage from './FormErrorMessage'
 import FormWrapper from './FormWrapper'
-import { iconStyles } from '@/utils/icon-styles'
 
 export interface ISignIn {
   email: string
@@ -23,9 +23,10 @@ export interface ISignIn {
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [user, setUser] = React.useState<any | null>()
 
-  const setUsername = userStore.use.setUsername()
+  const authStoreSetUser = authStore.use.setUser()
+  const authStoreSetToken = authStore.use.setToken()
+  const authStoreSetAuthStatus = authStore.use.setAuthStatus()
 
   const {
     handleSubmit,
@@ -49,10 +50,28 @@ export default function SignInForm() {
       email,
       password,
     })
+
     if (res) {
-      let data = res.data
-      setUser(data.user)
-      setUsername(data.user?.user_metadata?.username)
+      const user_data = res.data.user
+      const session_data = res.data.session
+
+      const user = {
+        username: user_data?.user_metadata.username,
+        email: user_data?.email,
+        id: user_data?.id,
+        created_at: user_data?.created_at,
+        last_sign_in_at: user_data?.last_sign_in_at,
+        phone_number: user_data?.phone,
+      }
+
+      const tokens = {
+        access_token: session_data?.access_token,
+        refresh_token: session_data?.refresh_token,
+      }
+
+      authStoreSetUser(user)
+      authStoreSetToken(tokens)
+      authStoreSetAuthStatus(true)
     }
     router.push(HomeRoute)
   }
@@ -98,7 +117,7 @@ export default function SignInForm() {
                     bg={inputBackgroundColor}
                     _hover={{ bg: inputBackgroundColor }}
                     onClick={() => setShowPassword(!showPassword)}>
-                    {showPassword ? <GrFormView style={iconStyles.input}/> : <GrFormViewHide style={iconStyles.input} />}
+                    {showPassword ? <GrFormView style={iconStyles.input} /> : <GrFormViewHide style={iconStyles.input} />}
                   </Button>
                 </InputRightElement>
               </InputGroup>

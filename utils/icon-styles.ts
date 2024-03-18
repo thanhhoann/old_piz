@@ -1,28 +1,41 @@
-const navIconSize = '40px'
+const navDesktopIconSize = '30px'
+const navMobileIconSize = '20px'
 const inputIconSize = '45px'
 const inputErrorIconSize = '35px'
 
 export const iconStyles = {
-  nav: {
-    active: {
-      width: navIconSize,
-      height: navIconSize,
-      color: '#ffffff',
+    nav_desktop: {
+        active: {
+            width: navDesktopIconSize,
+            height: navDesktopIconSize,
+            color: '#ffffff',
+        },
+        inactive: {
+            width: navDesktopIconSize,
+            height: navDesktopIconSize,
+            color: '#444444',
+        },
     },
-    inactive: {
-      width: navIconSize,
-      height: navIconSize,
-      color: '#444444',
+    nav_mobile: {
+        active: {
+            width: navMobileIconSize,
+            height: navMobileIconSize,
+            color: '#ffffff',
+        },
+        inactive: {
+            width: navMobileIconSize,
+            height: navMobileIconSize,
+            color: '#444444',
+        },
     },
-  },
-  input: {
-    width: inputIconSize,
-    height: inputIconSize,
-    color: '#ffffff',
-    error: {
-      width: inputErrorIconSize,
-      height: inputErrorIconSize,
-      color: 'red',
+    input: {
+        width: inputIconSize,
+        height: inputIconSize,
+        color: '#ffffff',
+        error: {
+            width: inputErrorIconSize,
+            height: inputErrorIconSize,
+            color: 'red',
+        },
     },
-  },
 }

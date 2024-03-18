@@ -1,43 +1,50 @@
-import { ActivityRoute, HomeRoute, SearchRoute } from '@/utils/app-routes'
+import { ActivityRoute, HomeRoute, SearchRoute, SettingsRoute } from '@/utils/app-routes'
 import { iconStyles } from '@/utils/icon-styles'
 import { Center, Flex } from '@chakra-ui/react'
 import { FaRegHeart } from 'react-icons/fa'
 import { LuUser } from 'react-icons/lu'
 import { TbSearch } from 'react-icons/tb'
 import { VscHome } from 'react-icons/vsc'
+import { SlSettings } from 'react-icons/sl'
+
 import NavItem from './NavItem'
 import NavItemAddComponent from './NavItemAddComponent'
 
 type NavItemListProps = {
   pathName?: string
   username?: string
+  isMobile?: boolean
 }
 
-export default function NavItemList({ username, pathName }: NavItemListProps) {
+export default function NavItemList({ isMobile, username, pathName }: NavItemListProps) {
   const userRoute = '/' + username
+  const iconStyleActive = isMobile ? iconStyles.nav_mobile.active : iconStyles.nav_desktop.active
+  const iconStyleInactive = isMobile ? iconStyles.nav_mobile.inactive : iconStyles.nav_desktop.inactive
   return (
     <>
-      <Center>
-        <Flex gap="3rem" alignItems="center">
+        <Flex gap="2rem" alignItems="center">
           <NavItem
             href={HomeRoute}
-            icon={pathName == HomeRoute ? <VscHome style={iconStyles.nav.active} /> : <VscHome style={iconStyles.nav.inactive} />}
+            icon={pathName == HomeRoute ? <VscHome style={iconStyleActive} /> : <VscHome style={iconStyleInactive} />}
           />
           <NavItem
             href={SearchRoute}
-            icon={pathName == SearchRoute ? <TbSearch style={iconStyles.nav.active} /> : <TbSearch style={iconStyles.nav.inactive} />}
+            icon={pathName == SearchRoute ? <TbSearch style={iconStyleActive} /> : <TbSearch style={iconStyleInactive} />}
           />
-          <NavItemAddComponent />
+          <NavItemAddComponent isMobile={isMobile}/>
           <NavItem
             href={ActivityRoute}
-            icon={pathName == ActivityRoute ? <FaRegHeart style={iconStyles.nav.active} /> : <FaRegHeart style={iconStyles.nav.inactive} />}
+            icon={pathName == ActivityRoute ? <FaRegHeart style={iconStyleActive} /> : <FaRegHeart style={iconStyleInactive} />}
           />
           <NavItem
             href={userRoute}
-            icon={pathName == userRoute ? <LuUser style={iconStyles.nav.active} /> : <LuUser style={iconStyles.nav.inactive} />}
+            icon={pathName == userRoute ? <LuUser style={iconStyleActive} /> : <LuUser style={iconStyleInactive} />}
+          />
+          <NavItem
+            href={SettingsRoute}
+            icon={pathName == SettingsRoute ? <SlSettings style={iconStyleActive} /> : <SlSettings style={iconStyleInactive} />}
           />
         </Flex>
-      </Center>
     </>
   )
 }

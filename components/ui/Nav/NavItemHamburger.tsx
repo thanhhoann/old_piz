@@ -25,7 +25,7 @@ export default function NavItemHamburger() {
                 bg="transparent"
                 _hover={{ bg: 'transparent' }}
                 _active={{ bg: 'transparent' }}>
-                <RxHamburgerMenu style={isOpen ? iconStyles.nav.active : iconStyles.nav.inactive} />
+                <RxHamburgerMenu style={isOpen ? iconStyles.nav_desktop.active : iconStyles.nav_desktop.inactive} />
               </MenuButton>
               <MenuList bg='transparent' border="none">
                 {menuList.map((item) => (
