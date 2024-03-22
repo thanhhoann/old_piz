@@ -1,25 +1,18 @@
-import React, { useState, useEffect } from 'react'
-import FormWrapper from './FormWrapper'
-import { HomeRoute, SignInRoute } from '@/utils/app-routes'
-import { appBackgroundColor, appTextColor, inputBackgroundColor, inputFocusBorderColor } from '@/utils/colors'
-import { Button, Flex, Text, FormControl, Input, InputGroup, InputRightElement, Toast, useToast } from '@chakra-ui/react'
-
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
 import { SignUpSchema } from '@/schemas'
-import { ViewIcon, ViewHideIcon } from '@/assets/AssetUtil'
-import FormErrorMessage from './FormErrorMessage'
+import { SignInRoute } from '@/utils/app-routes'
+import { inputBackgroundColor, inputFocusBorderColor } from '@/utils/colors'
+import { iconStyles } from '@/utils/icon-styles'
+import { SignUpProps } from '@/utils/types'
+import { Button, Flex, FormControl, Input, InputGroup, InputRightElement, useToast } from '@chakra-ui/react'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
-import { iconStyles } from '@/utils/icon-styles'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { GrFormView, GrFormViewHide } from 'react-icons/gr'
-
-export interface ISignUp {
-  username?: string
-  email: string
-  password: string
-}
+import * as z from 'zod'
+import FormErrorMessage from './FormErrorMessage'
+import FormWrapper from './FormWrapper'
 
 export default function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false)
@@ -44,7 +37,7 @@ export default function SignUpForm() {
   const supabase = createClientComponentClient()
   const toast = useToast()
 
-  const handleSignUp = async ({ username, email, password }: ISignUp) => {
+  const handleSignUp = async ({ username, email, password }: SignUpProps) => {
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -128,7 +121,7 @@ export default function SignUpForm() {
                     bg={inputBackgroundColor}
                     _hover={{ bg: inputBackgroundColor }}
                     onClick={() => setShowPassword(!showPassword)}>
-                    {showPassword ? <GrFormViewHide style={iconStyles.input}/> : <GrFormView style={iconStyles.input} />}
+                    {showPassword ? <GrFormViewHide style={iconStyles.input} /> : <GrFormView style={iconStyles.input} />}
                   </Button>
                 </InputRightElement>
               </InputGroup>

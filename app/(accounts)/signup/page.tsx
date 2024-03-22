@@ -1,4 +1,3 @@
-'use client'
 import FormSignUp from '@/components/auth/FormSignup'
 
 export default function SignUp() {

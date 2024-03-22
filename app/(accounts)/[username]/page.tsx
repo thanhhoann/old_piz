@@ -11,6 +11,12 @@ import {
   Heading,
   Input,
   Stack,
+  Stat,
+  StatArrow,
+  StatGroup,
+  StatHelpText,
+  StatLabel,
+  StatNumber,
   Tab,
   TabIndicator,
   TabList,
@@ -87,18 +93,29 @@ export default function ProfilePage({ params }: { params: { username: string } }
             <Box>
               <Stack>
                 <Heading>{user?.username}</Heading>
-                <Flex gap="0.5rem">
-                  <AvatarGroup size="xs" max={2}>
-                    <Avatar name="Ryan Florence" src="https://bit.ly/ryan-florence" />
-                    <Avatar name="Segun Adebayo" src="https://bit.ly/sage-adebayo" />
-                    <Avatar name="Kent Dodds" src="https://bit.ly/kent-c-dodds" />
-                    <Avatar name="Prosper Otemuyiwa" src="https://bit.ly/prosper-baba" />
-                    <Avatar name="Christian Nwamba" src="https://bit.ly/code-beast" />
-                  </AvatarGroup>
-                  <Text fontSize="1.2rem" color="gray.600">
-                    14.1k followers
-                  </Text>
-                </Flex>
+                {/* <Flex gap="0.5rem"> */}
+                {/* <AvatarGroup size="xs" max={2}> */}
+                {/*   <Avatar name="Ryan Florence" src="https://bit.ly/ryan-florence" /> */}
+                {/*   <Avatar name="Segun Adebayo" src="https://bit.ly/sage-adebayo" /> */}
+                {/*   <Avatar name="Kent Dodds" src="https://bit.ly/kent-c-dodds" /> */}
+                {/*   <Avatar name="Prosper Otemuyiwa" src="https://bit.ly/prosper-baba" /> */}
+                {/*   <Avatar name="Christian Nwamba" src="https://bit.ly/code-beast" /> */}
+                {/* </AvatarGroup> */}
+                {/* <Text fontSize="1.2rem" color="gray.600"> */}
+                {/*   14.1k followers */}
+                {/* </Text> */}
+                {/* </Flex> */}
+                <StatGroup gap='8'>
+                  <Stat>
+                    <StatLabel>Followers</StatLabel>
+                    <StatNumber>345</StatNumber>
+                  </Stat>
+
+                  <Stat>
+                    <StatLabel>Views</StatLabel>
+                    <StatNumber>45</StatNumber>
+                  </Stat>
+                </StatGroup>
               </Stack>
             </Box>
             <Box>
@@ -112,7 +129,9 @@ export default function ProfilePage({ params }: { params: { username: string } }
             </Box>
           </Flex>
 
-          <Button my="2rem">Edit profile</Button>
+          <Button my="2rem" variant="outline" color="white">
+            Edit profile
+          </Button>
 
           <Tabs pos="relative" isFitted variant="unstyled">
             <TabList>
@@ -123,8 +142,10 @@ export default function ProfilePage({ params }: { params: { username: string } }
             <TabIndicator mt="-1.5px" height="2px" bg="white" borderRadius="1px" />
             <TabPanels>
               <TabPanel>
-                <Center h='30vh'>
-                  <Button>Start your first post !</Button>
+                <Center h="30vh">
+                  <Button variant="outline" color="white">
+                    Start your first post
+                  </Button>
                 </Center>
               </TabPanel>
               <TabPanel>

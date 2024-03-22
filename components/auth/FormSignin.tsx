@@ -6,27 +6,19 @@ import { inputBackgroundColor, inputFocusBorderColor } from '@/utils/colors'
 import { iconStyles } from '@/utils/icon-styles'
 import { Button, Flex, FormControl, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { GrFormView, GrFormViewHide } from 'react-icons/gr'
 import * as z from 'zod'
 import FormErrorMessage from './FormErrorMessage'
 import FormWrapper from './FormWrapper'
 
-export interface ISignIn {
-  email: string
-  password: string
-}
-
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-
-  const authStoreSetUser = authStore.use.setUser()
-  const authStoreSetToken = authStore.use.setToken()
-  const authStoreSetAuthStatus = authStore.use.setAuthStatus()
+  const router = useRouter()
+  const signIn = authStore.use.signIn()
 
   const {
     handleSubmit,
@@ -42,44 +34,10 @@ export default function SignInForm() {
     },
   })
 
-  const router = useRouter()
-  const supabase = createClientComponentClient()
-
-  const handleSignIn = async ({ email, password }: ISignIn) => {
-    const res = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
-
-    if (res) {
-      const user_data = res.data.user
-      const session_data = res.data.session
-
-      const user = {
-        id: user_data?.id,
-        email: user_data?.email,
-        username: user_data?.user_metadata.username,
-        created_at: user_data?.created_at,
-        last_sign_in_at: user_data?.last_sign_in_at,
-        phone_number: user_data?.phone,
-      }
-
-      const tokens = {
-        token_type: session_data?.token_type,
-        access_token: session_data?.access_token,
-        refresh_token: session_data?.refresh_token,
-      }
-
-      authStoreSetUser(user)
-      authStoreSetToken(tokens)
-      authStoreSetAuthStatus(true)
-    }
-    router.push(HomeRoute)
-  }
-
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
     setIsSubmitted(true)
-    handleSignIn(values)
+    signIn(values)
+    router.push(HomeRoute)
     resetField('email')
     resetField('password')
   }
@@ -125,7 +83,7 @@ export default function SignInForm() {
             </Flex>
           </FormControl>
 
-          {/* message */}
+          {/* error message */}
           <>
             <>{errors.email && <FormErrorMessage>{errors.email.message}</FormErrorMessage>}</>
             <>{errors.password && <FormErrorMessage>{errors.password.message}</FormErrorMessage>}</>

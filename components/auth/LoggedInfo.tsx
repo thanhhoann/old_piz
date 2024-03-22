@@ -1,12 +1,9 @@
 'use client'
-import { Text, Box, Button, Flex } from '@chakra-ui/react'
+import { Button, Flex, Text } from '@chakra-ui/react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
-// import { auth } from '@/app/lib/auth'
-// import { useSession } from 'next-auth/react'
-import React, { useState, useEffect } from 'react'
-import { LoginButton } from './LoginBtn'
 import { useRouter } from 'next/navigation'
-import Avatar from '../common/UserAvatar'
+import React, { useEffect } from 'react'
+import { LoginButton } from './LoginBtn'
 
 export default function LoggedInfo() {
   const [user, setUser] = React.useState<any | null>()
@@ -35,7 +32,6 @@ export default function LoggedInfo() {
     <>
       {user ? (
         <Flex direction="column" gap="1rem">
-                    <Avatar/>
           <Text>
             Logged in as: <Text as="b">{user?.email}</Text>
           </Text>
