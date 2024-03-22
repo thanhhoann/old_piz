@@ -27,7 +27,7 @@ export default function NavItem({ icon, href, openModal }: INavItem) {
             <Box m="1rem">{icon}</Box>
           </LinkComponent>
         ) : (
-          <>{icon}</>
+          <Box m="1rem">{icon}</Box>
         )}
       </Box>
 

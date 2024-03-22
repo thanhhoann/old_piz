@@ -22,7 +22,7 @@ export default function NavItemList({ isMobile, username, pathName }: NavItemLis
   const iconStyleInactive = isMobile ? iconStyles.nav_mobile.inactive : iconStyles.nav_desktop.inactive
   return (
     <>
-      <Flex gap="2rem" alignItems="center">
+      <Flex gap={isMobile ? '0rem' : '2rem'} justifyContent="center" alignItems="center">
         <NavItem
           href={HomeRoute}
           icon={pathName == HomeRoute ? <VscHome style={iconStyleActive} /> : <VscHome style={iconStyleInactive} />}
