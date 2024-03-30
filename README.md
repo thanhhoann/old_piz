@@ -1,11 +1,10 @@
 # Folder Structure
--  [README.md](README.md)
 - 🍟 __app__
   - 🍟 __(accounts)__
     - 🍟 __[username]__
       -  [page.tsx](app/(accounts)/[username]/page.tsx)
     - 🍟 __callback__
-    - 🍟 __forgot\-password__
+    - 🍟 __forgot-password__
       -  [page.tsx](app/(accounts)/forgot-password/page.tsx)
     - 🍟 __signin__
       -  [page.tsx](app/(accounts)/signin/page.tsx)
@@ -20,11 +19,11 @@
         -  [route.ts](app/api/auth/[...nextauth]/route.ts)
       - 🍟 __callback__
         -  [route.ts](app/api/auth/callback/route.ts)
-      - 🍟 __sign\-in__
+      - 🍟 __sign-in__
         -  [route.ts](app/api/auth/sign-in/route.ts)
-      - 🍟 __sign\-out__
+      - 🍟 __sign-out__
         -  [route.ts](app/api/auth/sign-out/route.ts)
-      - 🍟 __sign\-up__
+      - 🍟 __sign-up__
         -  [route.ts](app/api/auth/sign-up/route.ts)
     - 🍟 __protected__
   - 🍟 __dashboard__
@@ -41,12 +40,12 @@
   - 🍟 __settings__
     -  [page.tsx](app/settings/page.tsx)
 - 🍟 __assets__
-  -  sAssetUtil.ts](assets/AssetUtil.ts)
+  -  [AssetUtil.ts](assets/AssetUtil.ts)
   - 🍟 __icons__
     -  [ViewHideIcon.tsx](assets/icons/ViewHideIcon.tsx)
     -  [ViewIcon.tsx](assets/icons/ViewIcon.tsx)
     -  [WarningIcon.tsx](assets/icons/WarningIcon.tsx)
-    -  [error\-16\-svgrepo\-com.svg](assets/icons/error-16-svgrepo-com.svg)
+    -  [error-16-svgrepo-com.svg](assets/icons/error-16-svgrepo-com.svg)
   - 🍟 __images__
   - 🍟 __svgs__
     -  [logo.svg](assets/svgs/logo.svg)
@@ -78,13 +77,12 @@
       -  [NavItemList.tsx](components/ui/Nav/NavItemList.tsx)
       -  [UserPostModal.tsx](components/ui/Nav/UserPostModal.tsx)
       -  [index.tsx](components/ui/Nav/index.tsx)
--  [components.json](components.json)
 - 🍟 __lib__
   -  [database.types.ts](lib/database.types.ts)
--  [next\-env.d.ts](next-env.d.ts)
+-  [next-env.d.ts](next-env.d.ts)
 -  [next.config.mjs](next.config.mjs)
--  [node\_modules](node_modules)
--  [package\-lock.json](package-lock.json)
+-  [node_modules](node_modules)
+-  [package-lock.json](package-lock.json)
 -  [package.json](package.json)
 -  [postcss.config.js](postcss.config.js)
 - 🍟 __public__
@@ -94,21 +92,22 @@
 - 🍟 __schemas__
   -  [index.ts](schemas/index.ts)
 - 🍟 __store__
-  -  [auth\-store.ts](store/auth-store.ts)
-  -  [route\-store.ts](store/route-store.ts)
+  -  [auth-store.ts](store/auth-store.ts)
+  -  [route-store.ts](store/route-store.ts)
 - 🍟 __styles__
   -  [globals.css](styles/globals.css)
-  -  [theme\-config.css](styles/theme-config.css)
--  [tailwind.config.ts](tailwind.config.ts)
--  [tsconfig.json](tsconfig.json)
--  [tsconfig.tsbuildinfo](tsconfig.tsbuildinfo)
+  -  [theme-config.css](styles/theme-config.css)
 - 🍟 __utils__
-  -  [app\-routes.ts](utils/app-routes.ts)
+  -  [app-routes.ts](utils/app-routes.ts)
   -  [colors.ts](utils/colors.ts)
-  -  [icon\-styles.ts](utils/icon-styles.ts)
+  -  [icon-styles.ts](utils/icon-styles.ts)
   - 🍟 __supabase__
     -  [client.ts](utils/supabase/client.ts)
     -  [middleware.ts](utils/supabase/middleware.ts)
     -  [server.ts](utils/supabase/server.ts)
   -  [types.ts](utils/types.ts)
-
+-  [README.md](README.md)
+-  [tailwind.config.ts](tailwind.config.ts)
+-  [tsconfig.json](tsconfig.json)
+-  [tsconfig.tsbuildinfo](tsconfig.tsbuildinfo)
+-  [components.json](components.json)
