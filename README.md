@@ -182,6 +182,7 @@ Full tech stack [here](/techstack.md)
 <br/>
 <div align='center'>
 
+```bash
 .
 ├── README.md
 ├── app
@@ -295,4 +296,4 @@ Full tech stack [here](/techstack.md)
     │   ├── middleware.ts
     │   └── server.ts
     └── types.ts
-
+```
