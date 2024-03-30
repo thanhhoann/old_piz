@@ -1,83 +1,82 @@
-# Folder Structure
-- 🍟 __app__
-  - 🍟 __(accounts)__
-    - 🍟 __[username]__
+-  __app__
+  -  __(accounts)__
+    -  __[username]__
       -  [page.tsx](app/(accounts)/[username]/page.tsx)
-    - 🍟 __callback__
-    - 🍟 __forgot-password__
+    -  __callback__
+    -  __forgot-password__
       -  [page.tsx](app/(accounts)/forgot-password/page.tsx)
-    - 🍟 __signin__
+    -  __signin__
       -  [page.tsx](app/(accounts)/signin/page.tsx)
-    - 🍟 __signout__
-    - 🍟 __signup__
+    -  __signout__
+    -  __signup__
       -  [page.tsx](app/(accounts)/signup/page.tsx)
-  - 🍟 __activity__
+  -  __activity__
     -  [page.tsx](app/activity/page.tsx)
-  - 🍟 __api__
-    - 🍟 __auth__
-      - 🍟 __[...nextauth]__
+  -  __api__
+    -  __auth__
+      -  __[...nextauth]__
         -  [route.ts](app/api/auth/[...nextauth]/route.ts)
-      - 🍟 __callback__
+      -  __callback__
         -  [route.ts](app/api/auth/callback/route.ts)
-      - 🍟 __sign-in__
+      -  __sign-in__
         -  [route.ts](app/api/auth/sign-in/route.ts)
-      - 🍟 __sign-out__
+      -  __sign-out__
         -  [route.ts](app/api/auth/sign-out/route.ts)
-      - 🍟 __sign-up__
+      -  __sign-up__
         -  [route.ts](app/api/auth/sign-up/route.ts)
-    - 🍟 __protected__
-  - 🍟 __dashboard__
+    -  __protected__
+  -  __dashboard__
     -  [page.tsx](app/dashboard/page.tsx)
   -  [favicon.ico](app/favicon.ico)
   -  [layout.tsx](app/layout.tsx)
-  - 🍟 __lib__
+  -  __lib__
     -  [auth.ts](app/lib/auth.ts)
   -  [middleware.ts](app/middleware.ts)
   -  [page.tsx](app/page.tsx)
   -  [providers.tsx](app/providers.tsx)
-  - 🍟 __search__
+  -  __search__
     -  [page.tsx](app/search/page.tsx)
-  - 🍟 __settings__
+  -  __settings__
     -  [page.tsx](app/settings/page.tsx)
-- 🍟 __assets__
+-  __assets__
   -  [AssetUtil.ts](assets/AssetUtil.ts)
-  - 🍟 __icons__
+  -  __icons__
     -  [ViewHideIcon.tsx](assets/icons/ViewHideIcon.tsx)
     -  [ViewIcon.tsx](assets/icons/ViewIcon.tsx)
     -  [WarningIcon.tsx](assets/icons/WarningIcon.tsx)
     -  [error-16-svgrepo-com.svg](assets/icons/error-16-svgrepo-com.svg)
-  - 🍟 __images__
-  - 🍟 __svgs__
+  -  __images__
+  -  __svgs__
     -  [logo.svg](assets/svgs/logo.svg)
-- 🍟 __components__
-  - 🍟 __auth__
-    -  [🍟rmErrorMessage.tsx](components/auth/🍟rmErrorMessage.tsx)
-    -  [🍟rmSignin.tsx](components/auth/🍟rmSignin.tsx)
-    -  [🍟rmSignup.tsx](components/auth/🍟rmSignup.tsx)
-    -  [🍟rmWrapper.tsx](components/auth/🍟rmWrapper.tsx)
+-  __components__
+  -  __auth__
+    -  [FormErrorMessage.tsx](components/auth/FormErrorMessage.tsx)
+    -  [FormSignin.tsx](components/auth/FormSignin.tsx)
+    -  [FormSignup.tsx](components/auth/FormSignup.tsx)
+    -  [FormWrapper.tsx](components/auth/FormWrapper.tsx)
     -  [LoggedInfo.tsx](components/auth/LoggedInfo.tsx)
     -  [LoginBtn.tsx](components/auth/LoginBtn.tsx)
     -  [ProfileBtn.tsx](components/auth/ProfileBtn.tsx)
-  - 🍟 __common__
+  -  __common__
     -  [CustomDivider.tsx](components/common/CustomDivider.tsx)
-    -  [🍟oter.tsx](components/common/🍟oter.tsx)
-    -  [🍟oterWrapper.tsx](components/common/🍟oterWrapper.tsx)
+    -  [Footer.tsx](components/common/Footer.tsx)
+    -  [FooterWrapper.tsx](components/common/FooterWrapper.tsx)
     -  [LinkComponent.tsx](components/common/LinkComponent.tsx)
     -  [Logo.tsx](components/common/Logo.tsx)
     -  [LogoComponent.tsx](components/common/LogoComponent.tsx)
     -  [UserAvatar.tsx](components/common/UserAvatar.tsx)
-  - 🍟 __profile__
+  -  __profile__
     -  [InfoSection.tsx](components/profile/InfoSection.tsx)
-  - 🍟 __search__
+  -  __search__
     -  [SearchBar.tsx](components/search/SearchBar.tsx)
-  - 🍟 __ui__
-    - 🍟 __Nav__
+  -  __ui__
+    -  __Nav__
       -  [NavItem.tsx](components/ui/Nav/NavItem.tsx)
       -  [NavItemHamburger.tsx](components/ui/Nav/NavItemHamburger.tsx)
       -  [NavItemList.tsx](components/ui/Nav/NavItemList.tsx)
       -  [UserPostModal.tsx](components/ui/Nav/UserPostModal.tsx)
       -  [index.tsx](components/ui/Nav/index.tsx)
-- 🍟 __lib__
+-  __lib__
   -  [database.types.ts](lib/database.types.ts)
 -  [next-env.d.ts](next-env.d.ts)
 -  [next.config.mjs](next.config.mjs)
@@ -85,23 +84,23 @@
 -  [package-lock.json](package-lock.json)
 -  [package.json](package.json)
 -  [postcss.config.js](postcss.config.js)
-- 🍟 __public__
+-  __public__
   -  [favicon.svg](public/favicon.svg)
   -  [next.svg](public/next.svg)
   -  [vercel.svg](public/vercel.svg)
-- 🍟 __schemas__
+-  __schemas__
   -  [index.ts](schemas/index.ts)
-- 🍟 __store__
+-  __store__
   -  [auth-store.ts](store/auth-store.ts)
   -  [route-store.ts](store/route-store.ts)
-- 🍟 __styles__
+-  __styles__
   -  [globals.css](styles/globals.css)
   -  [theme-config.css](styles/theme-config.css)
-- 🍟 __utils__
+-  __utils__
   -  [app-routes.ts](utils/app-routes.ts)
   -  [colors.ts](utils/colors.ts)
   -  [icon-styles.ts](utils/icon-styles.ts)
-  - 🍟 __supabase__
+  -  __supabase__
     -  [client.ts](utils/supabase/client.ts)
     -  [middleware.ts](utils/supabase/middleware.ts)
     -  [server.ts](utils/supabase/server.ts)
