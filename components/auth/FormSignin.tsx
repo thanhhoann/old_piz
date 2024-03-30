@@ -7,7 +7,7 @@ import { iconStyles } from '@/utils/icon-styles'
 import { Button, Flex, FormControl, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { GrFormView, GrFormViewHide } from 'react-icons/gr'
 import * as z from 'zod'
@@ -16,6 +16,7 @@ import FormWrapper from './FormWrapper'
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false)
+  const [disableButton, setDisableButton] = useState(true)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const router = useRouter()
   const signIn = authStore.use.signIn()
@@ -24,6 +25,7 @@ export default function SignInForm() {
     handleSubmit,
     register,
     resetField,
+    watch,
     formState: { errors, touchedFields },
   } = useForm<z.infer<typeof LoginSchema>>({
     mode: 'onChange',
@@ -41,6 +43,15 @@ export default function SignInForm() {
     resetField('email')
     resetField('password')
   }
+
+  const watchFields = watch(['email', 'password'])
+  useEffect(() => {
+    if (watchFields[0] && watchFields[1]) {
+      setDisableButton(false)
+    } else {
+      setDisableButton(true)
+    }
+  }, [watchFields])
 
   return (
     <>
@@ -90,7 +101,7 @@ export default function SignInForm() {
           </>
 
           {/* log in button */}
-          <Button mt="0.4rem" w="full" type="submit" isDisabled={touchedFields.email && touchedFields.password ? false : true}>
+          <Button mt="0.4rem" w="full" type="submit" isDisabled={disableButton}>
             Log in
           </Button>
         </form>

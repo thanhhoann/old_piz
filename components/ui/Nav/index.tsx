@@ -1,20 +1,22 @@
 'use client'
 import FooterWrapper from '@/components/common/FooterWrapper'
-import { Box, Center, Flex, Skeleton } from '@chakra-ui/react'
+import { Center, Skeleton } from '@chakra-ui/react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { usePathname } from 'next/navigation'
-import React, { Suspense, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import useMedia from 'use-media'
 import LogoComponent from '../../common/LogoComponent'
-import NavItemHamburger from './NavItemHamburger'
 import NavItemList from './NavItemList'
+import { SignInRoute, SignUpRoute } from '@/utils/app-routes'
 
 export default function Nav() {
   const [user, setUser] = React.useState<any | null>()
-  const isDesktop = useMedia({ minWidth: '760px' })
   const pathName = usePathname()
   const supabase = createClientComponentClient()
   const [isLoading, setLoading] = React.useState(true)
+  const isDesktop = useMedia({ minWidth: '760px' })
+  const isMobileL = useMedia({ minWidth: '425px' })
+  const isMobileS = useMedia({ minWidth: '320px' })
 
   async function getUser() {
     const {
@@ -26,12 +28,16 @@ export default function Nav() {
     getUser()
   }, [])
 
-  let timer = setTimeout(() => setLoading(false), 1000)
+  let timer = setTimeout(() => setLoading(false), 200)
   useEffect(() => {
     return () => {
       clearTimeout(timer)
     }
   }, [isLoading])
+
+  const pathname = usePathname()
+
+  if (pathname == SignInRoute || pathname == SignUpRoute) return <></>
 
   return (
     <>
@@ -39,7 +45,7 @@ export default function Nav() {
         <>
           <Center my="3">
             <Skeleton isLoaded={!isLoading}>
-              <NavItemList username={user?.user_metadata.username} pathName={pathName} />
+              <NavItemList screenSize="desktop" username={user?.user_metadata.username} pathName={pathName} />
             </Skeleton>
           </Center>
         </>
@@ -50,7 +56,7 @@ export default function Nav() {
           </Center>
           <FooterWrapper>
             <Skeleton isLoaded={!isLoading}>
-              <NavItemList pathName={pathName} isMobile />
+              <NavItemList screenSize={isMobileL ? 'mobileL' : 'mobileS'} pathName={pathName} isMobile />
             </Skeleton>
           </FooterWrapper>
         </>

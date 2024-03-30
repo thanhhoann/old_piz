@@ -182,4 +182,117 @@ Full tech stack [here](/techstack.md)
 <br/>
 <div align='center'>
 
-Generated via [Stack File](https://github.com/marketplace/stack-file)
+.
+├── README.md
+├── app
+│   ├── (accounts)
+│   │   ├── [username]
+│   │   │   └── page.tsx
+│   │   ├── callback
+│   │   ├── forgot-password
+│   │   │   └── page.tsx
+│   │   ├── signin
+│   │   │   └── page.tsx
+│   │   ├── signout
+│   │   └── signup
+│   │       └── page.tsx
+│   ├── activity
+│   │   └── page.tsx
+│   ├── api
+│   │   ├── auth
+│   │   │   ├── [...nextauth]
+│   │   │   │   └── route.ts
+│   │   │   ├── callback
+│   │   │   │   └── route.ts
+│   │   │   ├── sign-in
+│   │   │   │   └── route.ts
+│   │   │   ├── sign-out
+│   │   │   │   └── route.ts
+│   │   │   └── sign-up
+│   │   │       └── route.ts
+│   │   └── protected
+│   ├── dashboard
+│   │   └── page.tsx
+│   ├── favicon.ico
+│   ├── layout.tsx
+│   ├── lib
+│   │   └── auth.ts
+│   ├── middleware.ts
+│   ├── page.tsx
+│   ├── providers.tsx
+│   ├── search
+│   │   └── page.tsx
+│   └── settings
+│       └── page.tsx
+├── assets
+│   ├── AssetUtil.ts
+│   ├── icons
+│   │   ├── ViewHideIcon.tsx
+│   │   ├── ViewIcon.tsx
+│   │   ├── WarningIcon.tsx
+│   │   └── error-16-svgrepo-com.svg
+│   ├── images
+│   └── svgs
+│       └── logo.svg
+├── components
+│   ├── auth
+│   │   ├── FormErrorMessage.tsx
+│   │   ├── FormSignin.tsx
+│   │   ├── FormSignup.tsx
+│   │   ├── FormWrapper.tsx
+│   │   ├── LoggedInfo.tsx
+│   │   ├── LoginBtn.tsx
+│   │   └── ProfileBtn.tsx
+│   ├── common
+│   │   ├── CustomDivider.tsx
+│   │   ├── Footer.tsx
+│   │   ├── FooterWrapper.tsx
+│   │   ├── LinkComponent.tsx
+│   │   ├── Logo.tsx
+│   │   ├── LogoComponent.tsx
+│   │   └── UserAvatar.tsx
+│   ├── profile
+│   │   └── InfoSection.tsx
+│   ├── search
+│   │   └── SearchBar.tsx
+│   └── ui
+│       └── Nav
+│           ├── NavItem.tsx
+│           ├── NavItemHamburger.tsx
+│           ├── NavItemList.tsx
+│           ├── UserPostModal.tsx
+│           └── index.tsx
+├── components.json
+├── lib
+│   └── database.types.ts
+├── next-env.d.ts
+├── next.config.mjs
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── public
+│   ├── favicon.svg
+│   ├── next.svg
+│   └── vercel.svg
+├── schemas
+│   └── index.ts
+├── store
+│   ├── auth-store.ts
+│   └── route-store.ts
+├── styles
+│   ├── globals.css
+│   └── theme-config.css
+├── tailwind.config.ts
+├── test.md
+├── tsconfig.json
+├── tsconfig.tsbuildinfo
+└── utils
+    ├── app-routes.ts
+    ├── colors.ts
+    ├── icon-styles.ts
+    ├── supabase
+    │   ├── client.ts
+    │   ├── middleware.ts
+    │   └── server.ts
+    └── types.ts
+

@@ -1,5 +1,6 @@
+'use client'
 import { SignUpSchema } from '@/schemas'
-import { SignInRoute } from '@/utils/app-routes'
+import { HomeRoute, SignInRoute } from '@/utils/app-routes'
 import { inputBackgroundColor, inputFocusBorderColor } from '@/utils/colors'
 import { iconStyles } from '@/utils/icon-styles'
 import { SignUpProps } from '@/utils/types'
@@ -7,7 +8,7 @@ import { Button, Flex, FormControl, Input, InputGroup, InputRightElement, useToa
 import { zodResolver } from '@hookform/resolvers/zod'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { GrFormView, GrFormViewHide } from 'react-icons/gr'
 import * as z from 'zod'
@@ -16,13 +17,14 @@ import FormWrapper from './FormWrapper'
 
 export default function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [disableButton, setDisableButton] = useState(true)
 
   const {
     handleSubmit,
     register,
     resetField,
-    formState: { errors, touchedFields },
+    watch,
+    formState: { errors },
   } = useForm<z.infer<typeof SignUpSchema>>({
     mode: 'onChange',
     resolver: zodResolver(SignUpSchema),
@@ -63,12 +65,19 @@ export default function SignUpForm() {
         isClosable: true,
       })
     }
-    // router.push(HomeRoute)
+    router.push(HomeRoute)
   }
 
+  const watchFields = watch(['username', 'email', 'password'])
+  useEffect(() => {
+    if (watchFields[0] && watchFields[1] && watchFields[2]) {
+      setDisableButton(false)
+    } else {
+      setDisableButton(true)
+    }
+  }, [watchFields])
+
   const onSubmit = (values: z.infer<typeof SignUpSchema>) => {
-    setIsSubmitted(true)
-    console.log(values)
     handleSignUp(values)
     resetField('username')
     resetField('email')
@@ -136,7 +145,7 @@ export default function SignUpForm() {
           </>
 
           {/* log in button */}
-          <Button mt="0.4rem" w="full" type="submit" isDisabled={touchedFields.email && touchedFields.password ? false : true}>
+          <Button mt="0.4rem" w="full" type="submit" isDisabled={disableButton}>
             Sign Up
           </Button>
         </form>

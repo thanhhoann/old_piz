@@ -1,20 +1,16 @@
 'use client'
 import UserAvatar from '@/components/common/UserAvatar'
 import { authStore } from '@/store/auth-store'
+import { SignInRoute } from '@/utils/app-routes'
 import {
-  Avatar,
-  AvatarGroup,
   Box,
   Button,
   Center,
   Flex,
   Heading,
-  Input,
   Stack,
   Stat,
-  StatArrow,
   StatGroup,
-  StatHelpText,
   StatLabel,
   StatNumber,
   Tab,
@@ -23,9 +19,9 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
-  Text,
 } from '@chakra-ui/react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 export default function ProfilePage({ params }: { params: { username: string } }) {
@@ -85,27 +81,23 @@ export default function ProfilePage({ params }: { params: { username: string } }
     setLoading(false)
   }
 
+  const isAuthenticated = authStore.use.isAuthenticated()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (isAuthenticated == false) router.push(SignInRoute)
+  }, [])
+
   return (
     <>
       <Center mt="3rem">
-        <Flex flexDir="column" w="50vw">
-          <Flex alignItems="center" justifyContent="space-between" gap={2} w="full">
+        <Flex flexDir="column">
+          {/* info section */}
+          <Flex alignItems="center" justifyContent="space-between" gap={2}>
             <Box>
               <Stack>
                 <Heading>{user?.username}</Heading>
-                {/* <Flex gap="0.5rem"> */}
-                {/* <AvatarGroup size="xs" max={2}> */}
-                {/*   <Avatar name="Ryan Florence" src="https://bit.ly/ryan-florence" /> */}
-                {/*   <Avatar name="Segun Adebayo" src="https://bit.ly/sage-adebayo" /> */}
-                {/*   <Avatar name="Kent Dodds" src="https://bit.ly/kent-c-dodds" /> */}
-                {/*   <Avatar name="Prosper Otemuyiwa" src="https://bit.ly/prosper-baba" /> */}
-                {/*   <Avatar name="Christian Nwamba" src="https://bit.ly/code-beast" /> */}
-                {/* </AvatarGroup> */}
-                {/* <Text fontSize="1.2rem" color="gray.600"> */}
-                {/*   14.1k followers */}
-                {/* </Text> */}
-                {/* </Flex> */}
-                <StatGroup gap='8'>
+                <StatGroup gap="8">
                   <Stat>
                     <StatLabel>Followers</StatLabel>
                     <StatNumber>345</StatNumber>
@@ -128,11 +120,11 @@ export default function ProfilePage({ params }: { params: { username: string } }
               />
             </Box>
           </Flex>
-
           <Button my="2rem" variant="outline" color="white">
             Edit profile
           </Button>
 
+          {/* posts section */}
           <Tabs pos="relative" isFitted variant="unstyled">
             <TabList>
               <Tab>Posts</Tab>
