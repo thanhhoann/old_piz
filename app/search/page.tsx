@@ -1,6 +1,6 @@
 import SearchBar from '@/components/search/SearchBar'
 import { appBackgroundColor, searchBarBackgroundColor, searchBarBorderColor } from '@/utils/colors'
-import { Avatar, Box, Button, Flex, Stack, Text } from '@chakra-ui/react'
+import { Avatar, Box, Button, Center, Flex, Stack, Text } from '@chakra-ui/react'
 
 const mock_users = [
   {
@@ -50,9 +50,9 @@ const mock_users = [
 export default function SearchPage() {
   return (
     <>
-      <Box pt="1rem" px="1rem">
+      <Center py="1rem" bg={appBackgroundColor} m="1rem" pos="sticky" top="0" zIndex="999">
         <SearchBar />
-      </Box>
+      </Center>
 
       <Stack mt="1rem" gap="0.7rem">
         {mock_users?.map((user) => (

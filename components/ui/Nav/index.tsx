@@ -1,5 +1,6 @@
 'use client'
 import FooterWrapper from '@/components/common/FooterWrapper'
+import { SignInRoute, SignUpRoute } from '@/utils/app-routes'
 import { Center, Skeleton } from '@chakra-ui/react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { usePathname } from 'next/navigation'
@@ -7,7 +8,6 @@ import React, { useEffect } from 'react'
 import useMedia from 'use-media'
 import LogoComponent from '../../common/LogoComponent'
 import NavItemList from './NavItemList'
-import { SignInRoute, SignUpRoute } from '@/utils/app-routes'
 
 export default function Nav() {
   const [user, setUser] = React.useState<any | null>()
@@ -45,7 +45,7 @@ export default function Nav() {
         <>
           <Center my="3">
             <Skeleton isLoaded={!isLoading}>
-              <NavItemList screenSize="desktop" username={user?.user_metadata.username} pathName={pathName} />
+              <NavItemList username={user?.user_metadata.username} pathName={pathName} />
             </Skeleton>
           </Center>
         </>
@@ -56,7 +56,7 @@ export default function Nav() {
           </Center>
           <FooterWrapper>
             <Skeleton isLoaded={!isLoading}>
-              <NavItemList screenSize={isMobileL ? 'mobileL' : 'mobileS'} pathName={pathName} isMobile />
+              <NavItemList pathName={pathName} isMobile />
             </Skeleton>
           </FooterWrapper>
         </>

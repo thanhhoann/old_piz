@@ -1,3 +1,4 @@
+'use client'
 import { ActivityRoute, HomeRoute, SearchRoute, SettingsRoute } from '@/utils/app-routes'
 import { iconStyles } from '@/utils/icon-styles'
 import { Flex } from '@chakra-ui/react'
@@ -7,30 +8,24 @@ import { SlSettings } from 'react-icons/sl'
 import { TbSearch } from 'react-icons/tb'
 import { VscHome } from 'react-icons/vsc'
 
+import { appBackgroundColor } from '@/utils/colors'
 import { FaRegPenToSquare } from 'react-icons/fa6'
 import NavItem from './NavItem'
-import { appBackgroundColor } from '@/utils/colors'
 
 type NavItemListProps = {
   pathName?: string
   username?: string
   isMobile?: boolean
-  screenSize?: string
 }
 
-export default function NavItemList({ isMobile, screenSize, username, pathName }: NavItemListProps) {
+export default function NavItemList({ isMobile, username, pathName }: NavItemListProps) {
   const userRoute = '/' + username
   const iconStyleActive = isMobile ? iconStyles.nav_mobile.active : iconStyles.nav_desktop.active
   const iconStyleInactive = isMobile ? iconStyles.nav_mobile.inactive : iconStyles.nav_desktop.inactive
-  const gaps = {
-    desktop: '2rem',
-    mobileM: '0rem',
-    mobileL: '1rem',
-  }
-  console.log(gaps['desktop'])
+
   return (
     <>
-      <Flex gap={gaps[screenSize]} justifyContent="center" alignItems="center" bg={appBackgroundColor}>
+      <Flex justifyContent="center" alignItems="center" bg={appBackgroundColor}>
         <NavItem
           href={HomeRoute}
           icon={pathName == HomeRoute ? <VscHome style={iconStyleActive} /> : <VscHome style={iconStyleInactive} />}

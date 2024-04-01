@@ -21,7 +21,7 @@ export default function NavItem({ icon, href, openModal }: INavItem) {
 
   return (
     <>
-      <Box onClick={hanldeOpenModal}>
+      <Box onClick={hanldeOpenModal} cursor="pointer">
         {href ? (
           <LinkComponent href={href}>
             <Box m="1rem">{icon}</Box>

@@ -81,12 +81,12 @@ export default function ProfilePage({ params }: { params: { username: string } }
     setLoading(false)
   }
 
-  const isAuthenticated = authStore.use.isAuthenticated()
-  const router = useRouter()
-
-  useEffect(() => {
-    if (isAuthenticated == false) router.push(SignInRoute)
-  }, [])
+  // const isAuthenticated = authStore.use.isAuthenticated()
+  // const router = useRouter()
+  //
+  // useEffect(() => {
+  //   if (isAuthenticated == false) router.push(SignInRoute)
+  // }, [])
 
   return (
     <>
