@@ -1,5 +1,5 @@
 'use client'
-import { SignInRoute } from '@/utils/app-routes'
+import { SignInRoute } from '@/utils/app-routes.utils'
 import { useRouter } from 'next/navigation'
 
 interface LoginButtonProps {

@@ -1,6 +1,6 @@
-import { LikedRoute, SavedRoute, SettingsRoute } from '@/utils/app-routes'
-import { menuItemBackgroundColor, menuItemHoverBackgroundColor } from '@/utils/colors'
-import { iconStyles } from '@/utils/icon-styles'
+import { LikedRoute, SavedRoute, SettingsRoute } from '@/utils/app-routes.utils'
+import { menuItemBackgroundColor, menuItemHoverBackgroundColor } from '@/utils/colors.utils'
+import { iconStyles } from '@/utils/icon-styles.utils'
 import { Box, IconButton, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
 import { RxHamburgerMenu } from 'react-icons/rx'
 
@@ -27,7 +27,7 @@ export default function NavItemHamburger() {
                 _active={{ bg: 'transparent' }}>
                 <RxHamburgerMenu style={isOpen ? iconStyles.nav_desktop.active : iconStyles.nav_desktop.inactive} />
               </MenuButton>
-              <MenuList bg='transparent' border="none">
+              <MenuList bg="transparent" border="none">
                 {menuList.map((item) => (
                   <MenuItem
                     as="a"

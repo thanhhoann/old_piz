@@ -1,4 +1,4 @@
-import { HomeRoute } from '@/utils/app-routes'
+import { HomeRoute } from '@/utils/app-routes.utils'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 

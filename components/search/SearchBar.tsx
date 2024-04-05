@@ -1,4 +1,4 @@
-import { searchBarBackgroundColor, searchBarBorderColor } from '@/utils/colors'
+import { searchBarBackgroundColor, searchBarBorderColor } from '@/utils/colors.utils'
 import { Input } from '@chakra-ui/react'
 
 export default function SearchBar() {

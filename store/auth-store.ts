@@ -1,4 +1,4 @@
-import { SignInProps, SignUpProps } from '@/utils/types'
+import { SignInProps, SignUpProps } from '@/utils/types.utils'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { createSelectorFunctions } from 'auto-zustand-selectors-hook'
 import { create } from 'zustand'

@@ -1,5 +1,5 @@
 import { authStore } from '@/store/auth-store'
-import { appBackgroundColor } from '@/utils/colors'
+import { appBackgroundColor } from '@/utils/colors.utils'
 import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from '@chakra-ui/react'
 import { FaRegUserCircle } from 'react-icons/fa'
 
@@ -10,6 +10,7 @@ type UserPostModalProps = {
 
 export default function UserPostModal({ isOpen, onClose }: UserPostModalProps) {
   const user = authStore.use.user()
+
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose} isCentered>

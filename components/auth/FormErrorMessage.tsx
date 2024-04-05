@@ -1,4 +1,4 @@
-import { iconStyles } from '@/utils/icon-styles'
+import { iconStyles } from '@/utils/icon-styles.utils'
 import { Box, Flex, Text } from '@chakra-ui/react'
 import React from 'react'
 import { BsExclamation } from 'react-icons/bs'

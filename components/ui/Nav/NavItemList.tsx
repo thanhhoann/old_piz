@@ -1,6 +1,6 @@
 'use client'
-import { ActivityRoute, HomeRoute, SearchRoute, SettingsRoute } from '@/utils/app-routes'
-import { iconStyles } from '@/utils/icon-styles'
+import { ActivityRoute, HomeRoute, SearchRoute, SettingsRoute } from '@/utils/app-routes.utils'
+import { iconStyles } from '@/utils/icon-styles.utils'
 import { Flex } from '@chakra-ui/react'
 import { FaRegHeart } from 'react-icons/fa'
 import { LuUser } from 'react-icons/lu'
@@ -8,7 +8,7 @@ import { SlSettings } from 'react-icons/sl'
 import { TbSearch } from 'react-icons/tb'
 import { VscHome } from 'react-icons/vsc'
 
-import { appBackgroundColor } from '@/utils/colors'
+import { appBackgroundColor } from '@/utils/colors.utils'
 import { FaRegPenToSquare } from 'react-icons/fa6'
 import NavItem from './NavItem'
 

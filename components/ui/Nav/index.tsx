@@ -1,6 +1,7 @@
 'use client'
 import FooterWrapper from '@/components/common/FooterWrapper'
-import { SignInRoute, SignUpRoute } from '@/utils/app-routes'
+import { SignInRoute, SignUpRoute } from '@/utils/app-routes.utils'
+import { minWidth, screenSizes } from '@/utils/screen-sizes.utils'
 import { Center, Skeleton } from '@chakra-ui/react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { usePathname } from 'next/navigation'
@@ -14,9 +15,7 @@ export default function Nav() {
   const pathName = usePathname()
   const supabase = createClientComponentClient()
   const [isLoading, setLoading] = React.useState(true)
-  const isDesktop = useMedia({ minWidth: '760px' })
-  const isMobileL = useMedia({ minWidth: '425px' })
-  const isMobileS = useMedia({ minWidth: '320px' })
+  const isDesktop = useMedia(minWidth(screenSizes.DESKTOP))
 
   async function getUser() {
     const {

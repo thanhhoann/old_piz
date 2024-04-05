@@ -1,6 +1,6 @@
 import Footer from '@/components/common/Footer'
 import Nav from '@/components/ui/Nav'
-import { appBackgroundColor } from '@/utils/colors'
+import { appBackgroundColor } from '@/utils/colors.utils'
 import type { Metadata } from 'next'
 import { Raleway } from 'next/font/google'
 import { Providers } from './providers'

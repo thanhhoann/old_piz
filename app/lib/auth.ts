@@ -1,4 +1,4 @@
-import { SignInRoute } from '@/utils/app-routes'
+import { SignInRoute } from '@/utils/app-routes.utils'
 import NextAuth from 'next-auth'
 import { NextAuthConfig } from 'next-auth'
 import Github from "@auth/core/providers/github"

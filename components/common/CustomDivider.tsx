@@ -1,4 +1,4 @@
-import { appBackgroundColor } from '@/utils/colors'
+import { appBackgroundColor } from '@/utils/colors.utils'
 import { Box, Text, Divider, AbsoluteCenter } from '@chakra-ui/react'
 
 export default function CustomDivider() {
