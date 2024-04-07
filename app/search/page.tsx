@@ -1,5 +1,5 @@
-import SearchBar from '@/components/search/SearchBar'
-import UserList from '@/components/user/UserList'
+import SearchBar from '@/components/search-page/SearchBar'
+import UserList from '@/components/search-page/UserList'
 import { appBackgroundColor, searchBarBackgroundColor, searchBarBorderColor } from '@/utils/colors.utils'
 import { Avatar, Box, Button, Center, Flex, Stack, Text } from '@chakra-ui/react'
 

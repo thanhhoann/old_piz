@@ -23,6 +23,8 @@ export default function NavItemList({ isMobile, username, pathName }: NavItemLis
   const iconStyleActive = isMobile ? iconStyles.nav_mobile.active : iconStyles.nav_desktop.active
   const iconStyleInactive = isMobile ? iconStyles.nav_mobile.inactive : iconStyles.nav_desktop.inactive
 
+  console.log(userRoute)
+
   return (
     <>
       <Flex justifyContent="center" alignItems="center" bg={appBackgroundColor}>

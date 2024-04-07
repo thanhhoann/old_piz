@@ -1,3 +1,5 @@
+import { useMedia } from 'use-media'
+
 export enum screenSizes {
     MOBILE_S = 'mobile_s',
     MOBILE_M = 'mobile_m',
@@ -24,4 +26,17 @@ export const maxWidth = (screen: screenSizes) => {
     return { maxWidth: SCREEN_SIZES[screen] }
 }
 
-// TODO: implement useMedia here
+export const useMobile = (width: string, size: string) => {
+    if (width == 'min_width' && size == 's') return useMedia(minWidth(screenSizes.MOBILE_S))
+    if (width == 'min_width' && size == 'm') return useMedia(minWidth(screenSizes.MOBILE_M))
+    if (width == 'min_width' && size == 'l') return useMedia(minWidth(screenSizes.MOBILE_L))
+
+    if (width == 'max_width' && size == 's') return useMedia(maxWidth(screenSizes.MOBILE_S))
+    if (width == 'max_width' && size == 'm') return useMedia(maxWidth(screenSizes.MOBILE_M))
+    if (width == 'max_width' && size == 'l') return useMedia(maxWidth(screenSizes.MOBILE_L))
+}
+
+export const useDesktop = (width: string) => {
+    if (width == 'min_width') return useMedia(minWidth(screenSizes.DESKTOP))
+    if (width == 'max_width') return useMedia(maxWidth(screenSizes.DESKTOP))
+}

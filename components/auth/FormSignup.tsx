@@ -50,7 +50,7 @@ export default function SignUpForm() {
     })
     if (error)
       toast({
-        title: 'Failed to create account.',
+        title: 'Failed to create account 😢',
         description: error.message,
         status: 'error',
         duration: 5000,
@@ -64,8 +64,8 @@ export default function SignUpForm() {
         duration: 3000,
         isClosable: true,
       })
+      router.push(HomeRoute)
     }
-    router.push(HomeRoute)
   }
 
   const watchFields = watch(['username', 'email', 'password'])

@@ -1,5 +1,5 @@
 'use client'
-import UserAvatar from '@/components/common/UserAvatar'
+import UserAvatar from '@/components/auth/UserAvatar'
 import { authStore } from '@/store/auth-store'
 import { Box, Button, Center, Flex, Input, Text } from '@chakra-ui/react'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'

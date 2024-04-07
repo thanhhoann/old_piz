@@ -2,7 +2,7 @@
 import { LoginSchema } from '@/schemas'
 import { authStore } from '@/store/auth-store'
 import { HomeRoute, SignUpRoute } from '@/utils/app-routes.utils'
-import { inputBackgroundColor, inputFocusBorderColor } from '@/utils/colors.utils'
+import { appBackgroundColor, inputBackgroundColor, inputFocusBorderColor } from '@/utils/colors.utils'
 import { iconStyles } from '@/utils/icon-styles.utils'
 import { Button, Flex, FormControl, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -55,6 +55,9 @@ export default function SignInForm() {
 
   return (
     <>
+      <Button bg={appBackgroundColor} color={appBackgroundColor} _hover={{ color: 'white' }} pos="absolute" top="-3rem" right="0rem">
+        hihi
+      </Button>
       <FormWrapper headerText="Log in with Piz" backButtonText="Dont have an account ?" backButtonLink={SignUpRoute}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormControl>

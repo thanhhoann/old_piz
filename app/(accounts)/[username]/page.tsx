@@ -1,5 +1,5 @@
 'use client'
-import UserAvatar from '@/components/common/UserAvatar'
+import UserAvatar from '@/components/auth/UserAvatar'
 import { authStore } from '@/store/auth-store'
 import { SignInRoute } from '@/utils/app-routes.utils'
 import {

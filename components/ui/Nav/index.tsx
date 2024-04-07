@@ -1,5 +1,5 @@
 'use client'
-import FooterWrapper from '@/components/common/FooterWrapper'
+import FooterWrapper from '@/components/ui/footer/FooterWrapper'
 import { SignInRoute, SignUpRoute } from '@/utils/app-routes.utils'
 import { minWidth, screenSizes } from '@/utils/screen-sizes.utils'
 import { Center, Skeleton } from '@chakra-ui/react'
@@ -7,7 +7,7 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { usePathname } from 'next/navigation'
 import React, { useEffect } from 'react'
 import useMedia from 'use-media'
-import LogoComponent from '../../common/LogoComponent'
+import LogoComponent from '../logo/LogoComponent'
 import NavItemList from './NavItemList'
 
 export default function Nav() {
@@ -17,6 +17,7 @@ export default function Nav() {
   const [isLoading, setLoading] = React.useState(true)
   const isDesktop = useMedia(minWidth(screenSizes.DESKTOP))
 
+  //  TODO: replace with authStore function
   async function getUser() {
     const {
       data: { user },

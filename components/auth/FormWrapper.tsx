@@ -1,5 +1,5 @@
 import { Logo } from '@/assets/AssetUtil'
-import CustomDivider from '@/components/common/CustomDivider'
+import CustomDivider from '@/components/ui/custom/CustomDivider'
 import { HomeRoute } from '@/utils/app-routes.utils'
 import { appBackgroundColor, appTextColor } from '@/utils/colors.utils'
 import { Button, Center, Flex, Heading, Link, Text } from '@chakra-ui/react'

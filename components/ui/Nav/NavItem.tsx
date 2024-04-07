@@ -1,5 +1,5 @@
 'use client'
-import LinkComponent from '@/components/common/LinkComponent'
+import LinkComponent from '@/components/ui/custom/CustomLink'
 import { Box, useDisclosure } from '@chakra-ui/react'
 import React from 'react'
 import UserPostModal from './UserPostModal'
