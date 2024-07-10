@@ -2,17 +2,16 @@ import { authStore } from '@/store/auth-store'
 import { appBackgroundColor } from '@/utils/colors.utils'
 import { minWidth, screenSizes } from '@/utils/screen-sizes.utils'
 import {
-  Button,
-  Text,
-  Flex,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Input,
-  Textarea,
+    Button,
+    Flex,
+    Modal,
+    ModalBody,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
+    Text,
+    Textarea
 } from '@chakra-ui/react'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { useMedia } from 'use-media'

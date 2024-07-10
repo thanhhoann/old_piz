@@ -1,7 +1,6 @@
 import { inputBackgroundColor } from '@/utils/colors.utils'
-import { useMobile, minWidth } from '@/utils/screen-sizes.utils'
-import { Avatar, Box, Button, Flex, Stack, Text } from '@chakra-ui/react'
-import { useMedia } from 'use-media'
+import { useMobile } from '@/utils/screen-sizes.utils'
+import { Avatar, Button, Flex, Stack, Text } from '@chakra-ui/react'
 
 type PostTypes = {
   username: string
